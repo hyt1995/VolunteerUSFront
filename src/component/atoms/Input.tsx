@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 55px;
+    padding: 13px;
     font-size: 1rem;
     border: none;
-    border-bottom: 1px solid ${({ theme }) => theme.color.gray[5]};
-    padding-bottom: 0.5rem;
+    border: 1px solid ${({ theme }) => theme.color.gray1};
     outline: none;
-    width: 100%;
+
     &:focus {
-        color: $oc-teal-7;
-        border-bottom: 1px solid ${({ theme }) => theme.color.gray[7]};
-    }
-    & + & {
-        margin-top: 1rem;
+        border-color: ${({ theme }) => theme.color.primary};
+
+        + label {
+            color: ${({ theme }) => theme.color.primary};
+        }
     }
 `;
 

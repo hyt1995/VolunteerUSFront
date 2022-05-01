@@ -1,5 +1,5 @@
-import '../../styles/globals.css';
-import { theme } from '../../styles/theme';
+import '../styles/globals.css';
+import { theme } from '../styles/theme';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';

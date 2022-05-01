@@ -3,10 +3,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import Login from 'pages/auth/Login';
+import Register from 'pages/auth/Register';
+import Info from 'pages/auth/Info';
 
 const Home: NextPage = () => {
-    const a = 1;
-    return <Login />;
+    return <Register />;
 };
 
 export default Home;
