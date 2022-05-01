@@ -1,8 +1,8 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components';
 
-export default class MyDocument extends Document {
+export default class MyDocument extends Document<any> {
     static getInitialProps({ renderPage }: any) {
         // Step 1: Create an instance of ServerStyleSheet
         const sheet = new ServerStyleSheet();
@@ -19,8 +19,9 @@ export default class MyDocument extends Document {
 
     render() {
         return (
-            <html>
+            <Html>
                 <Head>
+                    {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
                     <title>My page</title>
                     {/* Step 5: Output the styles in the head  */}
                     {this.props.styleTags}
@@ -29,7 +30,7 @@ export default class MyDocument extends Document {
                     <Main />
                     <NextScript />
                 </body>
-            </html>
+            </Html>
         );
     }
 }

@@ -1,5 +1,5 @@
 import AuthTemplate from 'component/template/AuthTemplate';
-import LoginForm from 'component/organisms/LoginForm';
+import LoginForm from 'component/organisms/auth/LoginForm';
 import useLogin from 'hooks/auth/useLogin';
 
 const Login = () => {

@@ -1,5 +1,5 @@
 import AuthTemplate from 'component/template/AuthTemplate';
-import RegisterForm from 'component/organisms/RegisterForm';
+import RegisterForm from 'component/organisms/auth/RegisterForm';
 import useRegister from 'hooks/auth/useRegister';
 
 const Register = () => {
