@@ -2,7 +2,7 @@ import AuthTemplate from 'component/template/AuthTemplate';
 import RegisterForm from 'component/organisms/RegisterForm';
 import useRegister from 'hooks/auth/useRegister';
 
-const Register = () => {
+const Index = () => {
     const { form, onChange, onSubmit, error } = useRegister();
     return (
         <AuthTemplate>
@@ -11,4 +11,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Index;

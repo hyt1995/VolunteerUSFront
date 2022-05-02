@@ -6,12 +6,16 @@ const useLogin = () => {
         email: '',
         password: ''
     });
-    const [error, setError] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     const onSubmit = (e: SyntheticEvent) => {
         const { email, password }: formType = form;
+
+        if ([email, password].includes('')) {
+            setError('빈 칸을 입력해주세요');
+            return;
+        }
         e.preventDefault();
-        setError(false);
 
         console.log(email, password);
     };

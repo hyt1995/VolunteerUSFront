@@ -1,6 +1,19 @@
 import { AuthFormBlock, Button, Input, Error } from '../atoms';
+import Link from 'next/link';
+import { ChangeEvent, SyntheticEvent } from 'react';
 
-const RegisterForm = ({ form, onChange, onSubmit, error }: any) => (
+type propsType = {
+    form: {
+        email: string;
+        password: string;
+        confirmPassword: string;
+    };
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: (e: SyntheticEvent) => void;
+    error: string | null;
+};
+
+const RegisterForm = ({ form, onChange, onSubmit, error }: propsType) => (
     <AuthFormBlock>
         <h2 className="title">회원가입</h2>
         <p className="subtitle" style={{ margin: '21px 0 89px' }}>
@@ -22,20 +35,18 @@ const RegisterForm = ({ form, onChange, onSubmit, error }: any) => (
             <button type="button" className="btn-show">
                 <img src="src/images/icon/Eye.svg" alt="icon" />
             </button>
-            {error && <Error>{error}</Error>}
         </div>
 
         <div className="input-box">
-            <Input name="password" type="password" onChange={onChange} value={form.password} />
+            <Input name="confirmPassword" type="confirmPassword" onChange={onChange} value={form.confirmPassword} />
             <label htmlFor="userPw">
                 비밀번호 확인<i>*</i>
             </label>
             <button type="button" className="btn-show">
                 <img src="src/images/icon/Eye.svg" alt="icon" />
             </button>
-            {error && <Error>{error}</Error>}
         </div>
-
+        {error && <Error>{error}</Error>}
         <Button className="outline" fullWidth bgColor={'primary'} onClick={onSubmit} style={{ marginTop: '135px' }}>
             다음
         </Button>
@@ -44,7 +55,7 @@ const RegisterForm = ({ form, onChange, onSubmit, error }: any) => (
             <div>
                 이미 계정을 갖고 계신가요?
                 <Button className="text" fontSize="14px" color={'primary'} style={{ paddingLeft: '13px' }}>
-                    로그인
+                    <Link href="/login">로그인</Link>
                 </Button>
             </div>
         </div>

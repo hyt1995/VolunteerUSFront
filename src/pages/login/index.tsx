@@ -2,7 +2,7 @@ import AuthTemplate from 'component/template/AuthTemplate';
 import LoginForm from 'component/organisms/LoginForm';
 import useLogin from 'hooks/auth/useLogin';
 
-const Login = () => {
+const Index = () => {
     const { form, error, onChange, onSubmit } = useLogin();
     return (
         <AuthTemplate>
@@ -11,4 +11,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Index;

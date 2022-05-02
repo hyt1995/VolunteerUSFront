@@ -1,6 +1,6 @@
 import { AuthFormBlock, Button, Input, Error } from '../atoms';
 
-const InfoForm = ({ form, onChange, onSubmit, error }: any) => (
+const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
     <AuthFormBlock>
         <h2 className="title">
             봉사자님의
@@ -16,7 +16,7 @@ const InfoForm = ({ form, onChange, onSubmit, error }: any) => (
         </div>
 
         <div className="input-box">
-            <Input name="address" type="text" onChange={onChange} value={form.password} />
+            <Input name="address" type="text" onChange={onChange} value={form.address} onClick={onClick} />
             <label htmlFor="address">주소</label>
         </div>
 

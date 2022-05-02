@@ -7,12 +7,15 @@ const useRegister = () => {
         password: '',
         confirmPassword: ''
     });
-    const [error, setError] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     const onSubmit = (e: SyntheticEvent) => {
         const { email, password }: formType = form;
         e.preventDefault();
-        setError(false);
+        if ([email, password].includes('')) {
+            setError('빈 칸을 입력해주세');
+            return;
+        }
 
         console.log(email, password);
     };
