@@ -11,7 +11,7 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
         </p>
 
         <div className="input-box">
-            <Input name="emnameail" type="text" onChange={onChange} value={form.email} />
+            <Input name="name" type="text" onChange={onChange} value={form.name} />
             <label htmlFor="name">이름</label>
         </div>
 
@@ -21,12 +21,12 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
         </div>
 
         <div className="input-box">
-            <Input name="age" type="text" onChange={onChange} value={form.password} />
+            <Input name="age" type="text" onChange={onChange} value={form.age} />
             <label htmlFor="age">나이</label>
         </div>
 
         <div className="input-box">
-            <Input name="gender" type="text" onChange={onChange} value={form.password} />
+            <Input name="gender" type="text" onChange={onChange} value={form.gender} />
             <label htmlFor="gender">성별</label>
         </div>
 
