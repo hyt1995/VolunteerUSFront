@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { ChangeEvent, useCallback } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 
 const useInput = (initialForm: any) => {
@@ -6,7 +6,7 @@ const useInput = (initialForm: any) => {
     const reset = useResetRecoilState(initialForm);
 
     const onChange = useCallback(
-        (e: any) => {
+        (e: ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
             // @ts-ignore
             setForm({ ...form, [name]: value });
