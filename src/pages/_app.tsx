@@ -3,12 +3,16 @@ import { theme } from '../styles/theme';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
+import { ApolloProvider } from '@apollo/react-hooks';
+import client from 'lib/gql/client';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
     <ThemeProvider theme={theme}>
-        <RecoilRoot>
-            <Component {...pageProps} />
-        </RecoilRoot>
+        <ApolloProvider client={client}>
+            <RecoilRoot>
+                <Component {...pageProps} />
+            </RecoilRoot>
+        </ApolloProvider>
     </ThemeProvider>
 );
 

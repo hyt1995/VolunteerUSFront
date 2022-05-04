@@ -1,5 +1,6 @@
 import { useState, SyntheticEvent } from 'react';
 import useInputs from '../useInputs';
+import { useLoginQuery } from 'lib/query/auth';
 
 const useLogin = () => {
     const { form, onChange } = useInputs({
@@ -7,6 +8,8 @@ const useLogin = () => {
         password: ''
     });
     const [error, setError] = useState<string | null>(null);
+
+    const [login, { data, error: queryError }] = useLoginQuery();
 
     const onSubmit = (e: SyntheticEvent) => {
         const { email, password }: formType = form;
@@ -17,7 +20,7 @@ const useLogin = () => {
         }
         e.preventDefault();
 
-        console.log(email, password);
+        login({ variables: { id: email, password } });
     };
 
     return { form, onChange, error, onSubmit };

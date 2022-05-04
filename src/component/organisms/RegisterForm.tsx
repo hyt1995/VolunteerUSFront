@@ -38,7 +38,7 @@ const RegisterForm = ({ form, onChange, onSubmit, error }: propsType) => (
         </div>
 
         <div className="input-box">
-            <Input name="confirmPassword" type="confirmPassword" onChange={onChange} value={form.confirmPassword} />
+            <Input name="confirmPassword" type="password" onChange={onChange} value={form.confirmPassword} />
             <label htmlFor="userPw">
                 비밀번호 확인<i>*</i>
             </label>
