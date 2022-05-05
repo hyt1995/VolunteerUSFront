@@ -9,7 +9,7 @@ const useSearch = () => {
         detail: '',
         date: '',
         keyword: '',
-        target: '성인'
+        target: []
     });
     const [select, setSelect] = useState<selectType>({
         city: Object.keys(korea),
@@ -39,7 +39,21 @@ const useSearch = () => {
         [form]
     );
 
-    return { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate };
+    const handleCheck = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            const { target } = form;
+            const name = e.target.name;
+
+            if (target.includes(name)) {
+                setForm({ ...form, target: target.filter((value: string) => value !== name) });
+            } else {
+                setForm({ ...form, target: [...target, name] });
+            }
+        },
+        [form]
+    );
+
+    return { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate, handleCheck };
 };
 
 type selectType = {

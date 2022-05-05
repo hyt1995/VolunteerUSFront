@@ -8,8 +8,6 @@ const useInfo = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
 
-    console.log(form);
-
     const onSubmit = (e: SyntheticEvent) => {
         const { email, password }: any = form;
         e.preventDefault();

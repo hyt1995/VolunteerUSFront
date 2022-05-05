@@ -1,6 +1,6 @@
-import { useRef, ChangeEvent } from 'react';
-import { Button, Input, Error, Select, BaseBox, CheckBox, BorderBox, FlexBox, SubTitle, Title, List } from '../atoms';
-import { DatePicker, DropDown } from '../molecule';
+import { ChangeEvent } from 'react';
+import { Button, Input, BaseBox, BorderBox, FlexBox, SubTitle, Title, List } from '../atoms';
+import { DatePicker, DropDown, CheckBox } from '../molecule';
 import Image from 'next/image';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,7 +11,7 @@ type propsType = {
         detail: string;
         date: string;
         keyword: string;
-        target: string;
+        target: string[];
     };
     select: {
         city: string[];
@@ -21,17 +21,24 @@ type propsType = {
     onChangeDetail: (e: ChangeEvent<HTMLSelectElement>) => void;
     onChangeDate: (date: any) => void;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleCheck: (e: ChangeEvent) => void;
     onSubmit?: (e: ChangeEvent<HTMLSelectElement>) => void;
     error?: string;
     onClick?: any;
 };
 
-const SearchForm = ({ form, select, onChange, onChangeCity, onChangeDetail, onChangeDate, onSubmit, error, onClick }: propsType) => {
-    const datePickerRef = useRef<HTMLInputElement | null>(null);
-    const handleClick = (e) => {
-        console.log(e);
-    };
-
+const SearchForm = ({
+    form,
+    select,
+    onChange,
+    onChangeCity,
+    onChangeDetail,
+    onChangeDate,
+    handleCheck,
+    onSubmit,
+    error,
+    onClick
+}: propsType) => {
     return (
         <>
             <Swiper
@@ -82,24 +89,9 @@ const SearchForm = ({ form, select, onChange, onChangeCity, onChangeDetail, onCh
                     <FlexBox>
                         <SubTitle style={{ marginTop: '3px' }}>모집 대상</SubTitle>
                         <FlexBox style={{ justifyContent: 'space-between' }}>
-                            <CheckBox>
-                                <input id="group-1" type="checkbox" />
-                                <label htmlFor="group-1">
-                                    <span>성인</span>
-                                </label>
-                            </CheckBox>
-                            <CheckBox>
-                                <input id="group-2" type="checkbox" />
-                                <label htmlFor="group-2">
-                                    <span>청소년</span>
-                                </label>
-                            </CheckBox>
-                            <CheckBox>
-                                <input id="group-3" type="checkbox" />
-                                <label htmlFor="group-3">
-                                    <span>그룹</span>
-                                </label>
-                            </CheckBox>
+                            <CheckBox id="group-1" name="성인" onChange={handleCheck} />
+                            <CheckBox id="group-2" name="청소년" onChange={handleCheck} />
+                            <CheckBox id="group-3" name="그룹" onChange={handleCheck} />
                         </FlexBox>
                     </FlexBox>
                 </BorderBox>

@@ -3,7 +3,7 @@ import Header from 'component/organisms/BaseHeader';
 import useSearch from '../../hooks/main/useSearch';
 
 const Index = () => {
-    const { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate } = useSearch();
+    const { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate, handleCheck } = useSearch();
     return (
         <>
             <Header />
@@ -14,6 +14,7 @@ const Index = () => {
                 onChangeCity={onSelectCity}
                 onChangeDetail={onSelectDetail}
                 onChangeDate={onChangeDate}
+                handleCheck={handleCheck}
             />
         </>
     );
