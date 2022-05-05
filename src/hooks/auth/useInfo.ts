@@ -2,18 +2,39 @@ import { ChangeEvent, SyntheticEvent, useState, useCallback } from 'react';
 import useRecoilInput from '../useRecoilInput';
 import { registerAtom } from 'store/auth';
 import { birthdayFormatter } from 'utils/date';
+import { useRegisterMutation } from 'lib/query/auth';
+import { useRouter } from 'next/router';
 
 const useInfo = () => {
     const { form, onChange, setForm } = useRecoilInput(registerAtom);
     const [visible, setVisible] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
+    const [register, { error: queryError }] = useRegisterMutation();
+
+    const onComplete = (body: any) => {
+        const { createUser } = body;
+
+        if (createUser) {
+            router.push('/search');
+        } else {
+            setError('회원가입 실패');
+        }
+    };
+
+    const onError = () => {
+        setError('회원가입 실패');
+    };
 
     const onSubmit = (e: SyntheticEvent) => {
-        const { email, password }: any = form;
+        const { id, password, userName, gender, birthday, phone, address }: any = form;
         e.preventDefault();
-        console.log(form);
 
-        console.log(email, password);
+        register({
+            variables: { id, userName, password, gender, birthday: '19950105', phone, address },
+            onCompleted: (body: any) => onComplete(body),
+            onError: () => onError()
+        });
     };
 
     const onClick = useCallback(() => {
@@ -22,7 +43,13 @@ const useInfo = () => {
 
     const onChangeBirthDay = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
-            setForm({ ...form, birthday: birthdayFormatter(e.target.value) });
+            const { birthday }: any = form;
+            const { value } = e.target;
+            if (birthday.length < value.length) {
+                setForm({ ...form, birthday: birthdayFormatter(value) });
+            } else {
+                setForm({ ...form, birthday: value });
+            }
         },
         [form]
     );

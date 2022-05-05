@@ -9,7 +9,7 @@ export const registerAtom = atom<registerType>({
         userName: '',
         gender: false,
         birthday: '',
-        phone: '',
+        phone: '01000000000',
         address: ''
     }
 });

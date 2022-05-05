@@ -8,7 +8,7 @@ export const login = gql`
 `;
 
 export const register = gql`
-    query createUser(
+    mutation createUser(
         $id: String!
         $userName: String!
         $password: String!

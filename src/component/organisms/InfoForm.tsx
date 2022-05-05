@@ -16,7 +16,7 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick, onChangeBirthDay }
         </div>
 
         <div className="input-box">
-            <Input name="address" type="text" onChange={onChange} value={form.address} onClick={onClick} lg />
+            <Input name="address" type="text" onChange={onChange} value={form.address} onClick={onClick} onFocus={onClick} lg />
             <label htmlFor="address">주소</label>
         </div>
 

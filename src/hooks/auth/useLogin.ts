@@ -1,7 +1,7 @@
 import { useState, SyntheticEvent } from 'react';
 import useInputs from '../useInputs';
 import { useLoginQuery } from 'lib/query/auth';
-import { passwordStrength } from 'utils/auth';
+import { useRouter } from 'next/router';
 
 const useLogin = () => {
     const { form, onChange } = useInputs({
@@ -9,8 +9,20 @@ const useLogin = () => {
         password: ''
     });
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
-    const [login, { data, error: queryError }] = useLoginQuery();
+    const onComplete = (body: any) => {
+        const { login } = body;
+
+        if (login === '아이디가 없습니다.') {
+            setError('로그인 싪패');
+        } else {
+            localStorage.setItem('auth', JSON.stringify({ token: login }));
+            router.push('/search');
+        }
+    };
+
+    const [login] = useLoginQuery();
 
     const onSubmit = (e: SyntheticEvent) => {
         const { email, password }: formType = form;
@@ -20,12 +32,9 @@ const useLogin = () => {
             return;
         }
 
-        if (!passwordStrength(password)) {
-            setError('비밀번호는 6글자 이상 영문자와 숫자 특수문자를 포함시켜주세요.');
-        }
         e.preventDefault();
 
-        login({ variables: { id: email, password } });
+        login({ variables: { id: email, password }, onCompleted: (body: any) => onComplete(body) });
     };
 
     return { form, onChange, error, onSubmit };
