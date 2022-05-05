@@ -1,6 +1,6 @@
 import { AuthFormBlock, Button, Input, Error } from '../atoms';
 
-const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
+const InfoForm = ({ form, onChange, onSubmit, error, onClick, onChangeBirthDay }: any) => (
     <AuthFormBlock>
         <h2 className="title">
             봉사자님의
@@ -11,7 +11,7 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
         </p>
 
         <div className="input-box">
-            <Input name="name" type="text" onChange={onChange} value={form.name} lg />
+            <Input name="userName" type="text" onChange={onChange} value={form.userName} lg />
             <label htmlFor="name">이름</label>
         </div>
 
@@ -21,8 +21,8 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
         </div>
 
         <div className="input-box">
-            <Input name="age" type="text" onChange={onChange} value={form.age} lg />
-            <label htmlFor="age">나이</label>
+            <Input name="birthday" type="text" onChange={onChangeBirthDay} value={form.birthday} lg />
+            <label htmlFor="birthday">생년월일</label>
         </div>
 
         <div className="input-box">

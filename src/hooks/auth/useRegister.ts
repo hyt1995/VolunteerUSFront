@@ -1,31 +1,25 @@
-import useInputs from '../useInputs';
+import useRecoilInput from '../useRecoilInput';
+import { registerAtom } from 'store/auth';
 import { SyntheticEvent, useState } from 'react';
+import { useConfirmQuery } from 'lib/query/auth';
 
 const useRegister = () => {
-    const { form, onChange } = useInputs({
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
+    const { form, onChange } = useRecoilInput(registerAtom);
     const [error, setError] = useState<string | null>(null);
+    const [confirm, { data, error: queryError }] = useConfirmQuery();
 
     const onSubmit = (e: SyntheticEvent) => {
-        const { email, password }: formType = form;
+        const { id, password }: any = form;
         e.preventDefault();
-        if ([email, password].includes('')) {
+        if ([id, password].includes('')) {
             setError('빈 칸을 입력해주세');
             return;
         }
 
-        console.log(email, password);
+        confirm({ variables: { id } });
     };
 
     return { form, onChange, error, onSubmit };
-};
-
-type formType = {
-    email: string;
-    password: string;
 };
 
 export default useRegister;

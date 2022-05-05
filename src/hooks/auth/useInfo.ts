@@ -1,26 +1,28 @@
-import useInputs from '../useInputs';
-import { SyntheticEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import useRecoilInput from '../useRecoilInput';
+import { registerAtom } from 'store/auth';
+import { birthdayFormatter } from 'utils/date';
 
 const useInfo = () => {
-    const { form, setForm, onChange } = useInputs({
-        name: '',
-        address: '',
-        age: '',
-        gender: ''
-    });
+    const { form, onChange, setForm } = useRecoilInput(registerAtom);
     const [visible, setVisible] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
 
+    console.log(form);
+
     const onSubmit = (e: SyntheticEvent) => {
-        const { email, password }: formType = form;
+        const { email, password }: any = form;
         e.preventDefault();
-        setError(false);
+        console.log(form);
 
         console.log(email, password);
     };
 
     const onClick = () => {
         setVisible(true);
+    };
+    const onChangeBirthDay = (e: ChangeEvent<HTMLInputElement>) => {
+        setForm({ ...form, birthday: birthdayFormatter(e.target.value) });
     };
 
     const handleComplete = (data: any) => {
@@ -41,12 +43,7 @@ const useInfo = () => {
         setVisible(false);
     };
 
-    return { form, onChange, error, onSubmit, onClick, visible, handleComplete };
-};
-
-type formType = {
-    email: string;
-    password: string;
+    return { form, onChange, onChangeBirthDay, error, onSubmit, onClick, visible, handleComplete };
 };
 
 export default useInfo;
