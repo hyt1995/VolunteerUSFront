@@ -1,7 +1,7 @@
 import { AuthFormBlock, Button, Input, Error } from '../atoms';
 import Link from 'next/link';
 import { ChangeEvent, SyntheticEvent } from 'react';
-// import Eye from './images/icon/Eye.svg';
+import Image from 'next/image';
 
 type propsType = {
     form: {
@@ -22,33 +22,40 @@ const LoginForm = ({ form, onChange, onSubmit, error }: propsType) => {
             </h1>
 
             <div className="input-box">
-                <Input name="email" placeholder="ID" type="email" onChange={onChange} value={form.email} />
+                <Input type="email" lg name="email" placeholder="ID" onChange={onChange} value={form.email} />
                 <label htmlFor="userId">아이디</label>
             </div>
 
             <div className="input-box">
-                <Input name="password" placeholder="password" type="password" onChange={onChange} value={form.password} />
+                <Input type="password" lg name="password" placeholder="password" onChange={onChange} value={form.password} />
+
                 <label htmlFor="userPw">비밀번호</label>
-                <button type="button" className="btn-show">
-                    <img src="src/images/icon/Eye.svg" alt="icon" />
-                </button>
+
+                <Button text>
+                    <Image src="/images/icon/Eye.svg" alt="icon" width={24} height={24} />
+                </Button>
             </div>
 
             <div className="auth-another">
-                <Button type="button" className="text" fontSize="14px">
+                <Button text fontSize="14px">
                     <Link href="/register">회원가입</Link>
                 </Button>
-                <Button type="button" className="text" fontSize="14px" styled={{ fontWeight: '400' }}>
+
+                <Button text fontSize="14px" style={{ fontWeight: '400' }}>
                     비밀번호 찾기
                 </Button>
             </div>
+
             {error && <Error>{error}</Error>}
-            <Button fullWidth bgColor={'primary'} onClick={onSubmit}>
+
+            <Button fullWidth lg bgColor={'primary'} onClick={onSubmit}>
                 로그인
             </Button>
+
             <hr className="or" />
+
             <a href={KAKAO_URL}>
-                <Button className="icon" fullWidth bgColor={'warning'} color={'default'}>
+                <Button className="icon" fullWidth lg bgColor={'warning'} color={'default'}>
                     <img src="" alt="icon" /> 카톡 아이디로 로그인
                 </Button>
             </a>

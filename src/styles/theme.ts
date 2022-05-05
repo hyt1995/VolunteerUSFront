@@ -1,10 +1,9 @@
 import color from './settings/color';
-
-const baseSpace = ['13px'];
+import space from './settings/space';
 
 export const theme = {
     color,
-    baseSpace
+    space
 };
 
 export type Theme = typeof theme;

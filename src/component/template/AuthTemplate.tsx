@@ -17,6 +17,10 @@ const AuthTemplateBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-height: 360px) {
+        justify-content: flex-start;
+    }
 `;
 
 /* 흰색 박스 */
@@ -25,6 +29,10 @@ const Box = styled.div`
     width: 100%;
     max-width: 360px;
     border-radius: 2px;
+
+    @media (max-height: 360px) {
+        padding: 20px 0;
+    }
 `;
 
 type Props = {

@@ -24,6 +24,13 @@ export default class MyDocument extends Document {
                     <title>My page</title>
                     {/* Step 5: Output the styles in the head  */}
                     {this.props.styleTags}
+
+                    <link
+                        rel="stylesheet"
+                        as="style"
+                        crossorigin
+                        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+                    />
                 </Head>
                 <body>
                     <Main />

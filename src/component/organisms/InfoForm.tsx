@@ -11,26 +11,26 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick }: any) => (
         </p>
 
         <div className="input-box">
-            <Input name="name" type="text" onChange={onChange} value={form.name} />
+            <Input name="name" type="text" onChange={onChange} value={form.name} lg />
             <label htmlFor="name">이름</label>
         </div>
 
         <div className="input-box">
-            <Input name="address" type="text" onChange={onChange} value={form.address} onClick={onClick} />
+            <Input name="address" type="text" onChange={onChange} value={form.address} onClick={onClick} lg />
             <label htmlFor="address">주소</label>
         </div>
 
         <div className="input-box">
-            <Input name="age" type="text" onChange={onChange} value={form.age} />
+            <Input name="age" type="text" onChange={onChange} value={form.age} lg />
             <label htmlFor="age">나이</label>
         </div>
 
         <div className="input-box">
-            <Input name="gender" type="text" onChange={onChange} value={form.gender} />
+            <Input name="gender" type="text" onChange={onChange} value={form.gender} lg />
             <label htmlFor="gender">성별</label>
         </div>
 
-        <Button fullWidth bgColor={'primary'} onClick={onSubmit} style={{ marginTop: '49px' }}>
+        <Button fullWidth lg bgColor={'primary'} onClick={onSubmit} style={{ marginTop: '49px' }}>
             시작하기
         </Button>
     </AuthFormBlock>

@@ -7,9 +7,13 @@ type buttonStyleType = {
     bgColor?: string;
     fullWidth?: boolean;
     fontSize?: string;
+    lg?: boolean;
+    text?: boolean;
+    outline?: boolean;
 };
 
 const buttonStyle = css<buttonStyleType>`
+    height: 42px;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
@@ -18,15 +22,11 @@ const buttonStyle = css<buttonStyleType>`
     outline: none;
     cursor: pointer;
     background: ${({ theme }) => theme.color.gray[8]};
-    &:hover {
-        background: ${({ theme }) => theme.color.gray[6]};
-    }
+
     ${(props) =>
         props.fullWidth &&
         css`
             width: 100%;
-            height: 55px;
-            font-size: 1rem;
         `}
     ${(props) =>
         props.bgColor &&
@@ -42,6 +42,20 @@ const buttonStyle = css<buttonStyleType>`
             }}
         `}
     ${(props) =>
+        props.outline &&
+        css`
+            ${({ theme, color }) => {
+                const selected = theme.color[color];
+                return css`
+                    color: ${selected};
+                    border-color: ${selected};
+                    border-width: ${props.lg ? '2px' : '1px'};
+                    border-style: solid;
+                    background: #fff;
+                `;
+            }}
+        `}
+    ${(props) =>
         props.color &&
         css`
             ${({ theme, color }) => {
@@ -51,17 +65,28 @@ const buttonStyle = css<buttonStyleType>`
                 `;
             }}
         `}
+    ${(props) =>
+        props.lg &&
+        css`
+            height: ${({ theme }) => theme.space.xlg};
+        `}
+    ${(props) =>
+        props.text &&
+        css`
+            height: auto;
+            padding: 0;
+            background: none;
+            font-size: ${props.fontSize || '12px'};
+            color: ${({ theme }) => theme.color.gray3};
+
+            &:hover {
+                background: transparent;
+            }
+        `}
     &:disabled {
         background: ${({ theme }) => theme.color.gray[3]};
         color: ${({ theme }) => theme.color.gray[5]};
         cursor: not-allowed;
-    }
-
-    &.text {
-        padding: 0;
-        background: none;
-        font-size: ${(props) => props.fontSize || '12px'};
-        color: ${({ theme }) => theme.color.gray3};
     }
     &.icon {
         img {

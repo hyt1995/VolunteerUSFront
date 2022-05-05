@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const AuthFormBlock = styled.div`
     h1 {
         text-align: center;
-        margin-bottom: 55px;
+        margin-bottom: ${({ theme }) => theme.space.xlg};
     }
 
     .title {
@@ -22,12 +22,12 @@ const AuthFormBlock = styled.div`
         width: 100%;
 
         & + .input-box {
-            margin-top: ${({ theme }) => theme.baseSpace};
+            margin-top: ${({ theme }) => theme.space.sm};
         }
 
         label {
             display: inline-block;
-            margin-bottom: 5px;
+            margin-bottom: ${({ theme }) => theme.space.xxs};
             font-size: 12px;
             color: ${({ theme }) => theme.color.gray3};
 
@@ -39,7 +39,7 @@ const AuthFormBlock = styled.div`
         button {
             position: absolute;
             top: 50%;
-            right: 0;
+            right: ${({ theme }) => theme.space.sm};
             transform: translateY(-10%);
         }
     }
@@ -55,7 +55,7 @@ const AuthFormBlock = styled.div`
             border: none;
             position: relative;
             height: 19px;
-            margin: ${({ theme }) => theme.baseSpace} 0;
+            margin: ${({ theme }) => theme.space.sm} 0;
             &:before {
                 content: 'OR';
                 position: absolute;
