@@ -1,4 +1,4 @@
-export const korea = {
+export const korea: koreaType = {
     서울특별시: [
         '종로구',
         '중구',
@@ -207,4 +207,25 @@ export const korea = {
         '구례군'
     ],
     제주특별자치도: ['제주시', '서귀포시']
+};
+
+type koreaType = {
+    [index: string]: string[];
+    서울특별시: string[];
+    부산광역시: string[];
+    인천광역시: string[];
+    대구광역시: string[];
+    광주광역시: string[];
+    대전광역시: string[];
+    울산광역시: string[];
+    세종특별자치시: string[];
+    경기도: string[];
+    강원도: string[];
+    충청북도: string[];
+    충청남도: string[];
+    경상북도: string[];
+    경상남도: string[];
+    전라북도: string[];
+    전라남도: string[];
+    제주특별자치도: string[];
 };

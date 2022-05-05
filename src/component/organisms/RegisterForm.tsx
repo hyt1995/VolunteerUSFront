@@ -4,9 +4,14 @@ import { ChangeEvent, SyntheticEvent } from 'react';
 
 type propsType = {
     form: {
-        email: string;
+        id: string;
         password: string;
         confirmPassword: string;
+        userName: string;
+        gender: boolean;
+        birthday: string;
+        phone: string;
+        address: string;
     };
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (e: SyntheticEvent) => void;
@@ -21,7 +26,7 @@ const RegisterForm = ({ form, onChange, onSubmit, error }: propsType) => (
         </p>
 
         <div className="input-box">
-            <Input name="email" type="email" onChange={onChange} value={form.email} />
+            <Input name="id" type="id" onChange={onChange} value={form.id} />
             <label htmlFor="userId">
                 아이디<i>*</i>
             </label>

@@ -5,7 +5,7 @@ import MenuItem from 'component/atoms/MenuItem';
 type propsType = {
     label: string;
     items: string[];
-    onChange?: (e: MouseEvent<HTMLLIElement>) => void;
+    onChange?: (e: string) => void;
 };
 const Dropdown = ({ label, items, onChange }: propsType) => {
     const [active, setActive] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const Dropdown = ({ label, items, onChange }: propsType) => {
                         key={i}
                         onClick={(e) => {
                             onSelectItem(e);
-                            onChange?.(e);
+                            onChange?.(i);
                         }}
                     >
                         <MenuItem id="item_name">{i}</MenuItem>

@@ -8,19 +8,15 @@ const useRegister = () => {
     const [error, setError] = useState<string | null>(null);
     const [confirm, { data, error: queryError }] = useConfirmQuery();
 
-    console.log(data);
-
     const onSubmit = (e: SyntheticEvent) => {
-        const { email, password }: any = form;
+        const { id, password }: any = form;
         e.preventDefault();
-        if ([email, password].includes('')) {
+        if ([id, password].includes('')) {
             setError('빈 칸을 입력해주세');
             return;
         }
 
-        confirm({ variables: { id: email } });
-
-        console.log(email, password);
+        confirm({ variables: { id } });
     };
 
     return { form, onChange, error, onSubmit };

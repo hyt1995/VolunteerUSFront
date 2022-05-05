@@ -14,6 +14,17 @@ const useSearch = () => {
         city: Object.keys(korea),
         detail: korea['서울특별시']
     });
+
+    const onSelectCity = (data: string) => {
+        setSelect({ ...select, detail: korea[data] });
+        setForm({ ...form, city: data });
+    };
+
+    const onSelectDetail = (data: string) => {
+        setForm({ ...form, detail: data });
+    };
+    console.log(select);
+    return { form, select, onSelectCity, onSelectDetail };
 };
 
 type selectType = {
