@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useState, useCallback } from 'react';
 import useRecoilInput from '../useRecoilInput';
 import { registerAtom } from 'store/auth';
 import { birthdayFormatter } from 'utils/date';
@@ -18,30 +18,37 @@ const useInfo = () => {
         console.log(email, password);
     };
 
-    const onClick = () => {
+    const onClick = useCallback(() => {
         setVisible(true);
-    };
-    const onChangeBirthDay = (e: ChangeEvent<HTMLInputElement>) => {
-        setForm({ ...form, birthday: birthdayFormatter(e.target.value) });
-    };
+    }, []);
 
-    const handleComplete = (data: any) => {
-        let fullAddress = data.address;
-        let extraAddress = '';
+    const onChangeBirthDay = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            setForm({ ...form, birthday: birthdayFormatter(e.target.value) });
+        },
+        [form]
+    );
 
-        if (data.addressType === 'R') {
-            if (data.bname !== '') {
-                extraAddress += data.bname;
+    const handleComplete = useCallback(
+        (data: any) => {
+            let fullAddress = data.address;
+            let extraAddress = '';
+
+            if (data.addressType === 'R') {
+                if (data.bname !== '') {
+                    extraAddress += data.bname;
+                }
+                if (data.buildingName !== '') {
+                    extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+                }
+                fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
             }
-            if (data.buildingName !== '') {
-                extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
-            }
-            fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
-        }
 
-        setForm({ ...form, address: fullAddress });
-        setVisible(false);
-    };
+            setForm({ ...form, address: fullAddress });
+            setVisible(false);
+        },
+        [form]
+    );
 
     return { form, onChange, onChangeBirthDay, error, onSubmit, onClick, visible, handleComplete };
 };

@@ -1,12 +1,13 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useCallback } from 'react';
 import useInputs from '../useInputs';
 import { korea } from 'utils/city';
+import { dateFormatter } from 'utils/date';
 
 const useSearch = () => {
     const { form, setForm, onChange } = useInputs({
         city: '서울특별시',
         detail: '',
-        period: '',
+        date: '',
         keyword: '',
         target: '성인'
     });
@@ -15,16 +16,31 @@ const useSearch = () => {
         detail: korea['서울특별시']
     });
 
-    const onSelectCity = (e: ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value);
-        setSelect({ ...select, detail: korea[e.target.value] });
-        setForm({ ...form, city: e.target.value });
-    };
+    const onChangeDate = useCallback(
+        (date: any) => {
+            setForm({ ...form, date: dateFormatter(new Date(date)) });
+        },
+        [form]
+    );
 
-    const onSelectDetail = (e: ChangeEvent<HTMLSelectElement>) => {
-        setForm({ ...form, detail: e.target.value });
-    };
-    return { form, select, onSelectCity, onSelectDetail };
+    const onSelectCity = useCallback(
+        (e: ChangeEvent<HTMLSelectElement>) => {
+            console.log(e.target.value);
+            setSelect({ ...select, detail: korea[e.target.value] });
+            setForm({ ...form, city: e.target.value });
+        },
+        [select, form]
+    );
+
+    const onSelectDetail = useCallback(
+        (e: ChangeEvent<HTMLSelectElement>) => {
+            setForm({ ...form, detail: e.target.value });
+        },
+        [form]
+    );
+
+    console.log(form);
+    return { form, select, onSelectCity, onSelectDetail, onChangeDate };
 };
 
 type selectType = {

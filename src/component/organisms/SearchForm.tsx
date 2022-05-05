@@ -9,7 +9,7 @@ type propsType = {
     form: {
         city: string;
         detail: string;
-        period: string;
+        date: string;
         keyword: string;
         target: string;
     };
@@ -19,11 +19,13 @@ type propsType = {
     };
     onChangeCity: (e: ChangeEvent<HTMLSelectElement>) => void;
     onChangeDetail: (e: ChangeEvent<HTMLSelectElement>) => void;
+    onChangeDate: (date: any) => void;
     onSubmit?: (e: ChangeEvent<HTMLSelectElement>) => void;
     error?: string;
+    onClick?: any;
 };
 
-const SearchForm = ({ form, select, onChangeCity, onChangeDetail, onSubmit, error, onClick }: propsType) => {
+const SearchForm = ({ form, select, onChangeCity, onChangeDetail, onChangeDate, onSubmit, error, onClick }: propsType) => {
     const datePickerRef = useRef<HTMLInputElement | null>(null);
     const handleClick = (e) => {
         console.log(e);
@@ -61,7 +63,7 @@ const SearchForm = ({ form, select, onChangeCity, onChangeDetail, onSubmit, erro
                     <FlexBox>
                         <SubTitle>시작 날짜</SubTitle>
                         <FlexBox>
-                            <DatePicker />
+                            <DatePicker onChange={onChangeDate} />
                         </FlexBox>
                     </FlexBox>
 
