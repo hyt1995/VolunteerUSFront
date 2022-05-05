@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import useInputs from '../useInputs';
 import { korea } from 'utils/city';
 
@@ -15,15 +15,15 @@ const useSearch = () => {
         detail: korea['서울특별시']
     });
 
-    const onSelectCity = (data: string) => {
-        setSelect({ ...select, detail: korea[data] });
-        setForm({ ...form, city: data });
+    const onSelectCity = (e: ChangeEvent<HTMLSelectElement>) => {
+        console.log(e.target.value);
+        setSelect({ ...select, detail: korea[e.target.value] });
+        setForm({ ...form, city: e.target.value });
     };
 
-    const onSelectDetail = (data: string) => {
-        setForm({ ...form, detail: data });
+    const onSelectDetail = (e: ChangeEvent<HTMLSelectElement>) => {
+        setForm({ ...form, detail: e.target.value });
     };
-    console.log(select);
     return { form, select, onSelectCity, onSelectDetail };
 };
 

@@ -1,123 +1,30 @@
-import React, { useRef } from 'react';
-import DatePicker from 'react-multi-date-picker';
-import styled, { css } from 'styled-components';
-import { Button, Input, Error, Select, BaseBox, CheckBox } from '../atoms';
+import { useRef, ChangeEvent } from 'react';
+import { Button, Input, Error, Select, BaseBox, CheckBox, BorderBox, FlexBox, SubTitle, Title, List } from '../atoms';
+import { DatePicker, DropDown } from '../molecule';
 import Image from 'next/image';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-const BorderBox = styled.div`
-    padding: ${({ theme }) => theme.space.sm};
-    border: 1px solid ${({ theme }) => theme.color.primary};
-`;
+type propsType = {
+    form: {
+        city: string;
+        detail: string;
+        period: string;
+        keyword: string;
+        target: string;
+    };
+    select: {
+        city: string[];
+        detail: string[];
+    };
+    onChangeCity: (e: ChangeEvent<HTMLSelectElement>) => void;
+    onChangeDetail: (e: ChangeEvent<HTMLSelectElement>) => void;
+    onSubmit?: (e: ChangeEvent<HTMLSelectElement>) => void;
+    error?: string;
+};
 
-const FlexBox = styled.div`
-    display: flex;
-    width: 100%;
-
-    ${(props) =>
-        props.column &&
-        css`
-            flex-direction: column;
-        `}
-    ${(props) =>
-        props.align &&
-        css`
-            align-items: ${props.align};
-        `}
-    ${(props) =>
-        props.justify &&
-        css`
-            justify-content: ${props.justify};
-        `}
-
-    & + & {
-        margin-top: ${({ theme }) => theme.space.sm};
-    }
-`;
-
-const Title = styled.h2`
-    font-size: 16px;
-    color: ${({ theme }) => theme.color.gray3};
-    margin-bottom: ${({ theme }) => theme.space.md};
-`;
-
-const SubTitle = styled.h3`
-    white-space: nowrap;
-    margin-top: ${({ theme }) => theme.space.sm};
-    margin-right: ${({ theme }) => theme.space.sm};
-    color: ${({ theme }) => theme.color.gray3};
-    font-size: 12px;
-    font-weight: 500;
-`;
-
-const List = styled.div`
-    display: flex;
-    align-items: center;
-    padding: ${({ theme }) => theme.space.sm} 0;
-    border-top: 1px solid ${({ theme }) => theme.color.gray1};
-
-    .list-image {
-        width: 80px;
-        height: 80px;
-        border-radius: 4px;
-        background: #6681aa;
-        overflow: hidden;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .list-info {
-        flex: 2;
-        margin: 0 ${({ theme }) => theme.space.sm};
-
-        .title {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 11px;
-            /* 말줄임표 */
-            display: -webkit-box;
-            word-wrap: break-word;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .info {
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            color: gray2;
-
-            & + & {
-                margin-top: 3px;
-            }
-            span {
-                margin-left: ${({ theme }) => theme.space.xxs};
-            }
-        }
-    }
-    .list-etc {
-        .count {
-            display: inline-block;
-            text-align: center;
-            width: 32px;
-            height: 32px;
-            line-height: 32px;
-            border-radius: 50%;
-            font-size: 21px;
-            font-weight: bold;
-            color: #fff;
-            background: ${({ theme }) => theme.color.primary};
-        }
-    }
-`;
-
-const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
-    const datePickerRef = useRef();
+const SearchForm = ({ form, select, onChangeCity, onChangeDetail, onSubmit, error, onClick }: propsType) => {
+    const datePickerRef = useRef<HTMLInputElement | null>(null);
     const handleClick = (e) => {
         console.log(e);
     };
@@ -145,33 +52,16 @@ const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
                     <FlexBox>
                         <SubTitle>봉사 지역</SubTitle>
                         <FlexBox column>
-                            <Select>
-                                <option value="">서울시</option>
-                            </Select>
-                            <Select>
-                                <option value="">분류 1</option>
-                            </Select>
-                            <Select>
-                                <option value="">분류 2</option>
-                            </Select>
+                            <DropDown options={select.city} onChange={onChangeCity} />
+                            <DropDown options={select.detail} onChange={onChangeDetail} />
+                            <DropDown options={select.detail} onChange={onChangeDetail} />
                         </FlexBox>
                     </FlexBox>
 
                     <FlexBox>
                         <SubTitle>시작 날짜</SubTitle>
                         <FlexBox>
-                            <Button
-                                bgColor="gray1"
-                                style={{ padding: '9px', marginRight: '13px' }}
-                                onClick={() => datePickerRef.current.openCalendar()}
-                            >
-                                <Image src="/images/icon/Calendar.svg" alt="icon" width={24} height={24} />
-                            </Button>
-                            <DatePicker className="custom-picker" ref={datePickerRef}>
-                                <Button text onClick={() => datePickerRef.current.closeCalendar()} style={{ margin: '5px' }}>
-                                    <Image src="/images/icon/x.svg" alt="icon" width={16} height={16} />
-                                </Button>
-                            </DatePicker>
+                            <DatePicker />
                         </FlexBox>
                     </FlexBox>
 
@@ -214,7 +104,6 @@ const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
             <BaseBox>
                 <FlexBox align="flex-start" justify="space-between">
                     <Title>봉사 활동 목록</Title>
-
                     <div>
                         <Button text color="gray3" style={{ marginRight: '21px' }}>
                             가까운순

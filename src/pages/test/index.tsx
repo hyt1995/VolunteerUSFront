@@ -1,4 +1,3 @@
-import Dropdown from 'component/molecule/Dropdown';
 import useSearch from 'hooks/main/useSearch';
 
 const Test = () => {
@@ -6,8 +5,7 @@ const Test = () => {
     console.log(form);
     return (
         <>
-            <Dropdown label="test" items={select.city} onChange={onSelectCity}></Dropdown>
-            <Dropdown label="test" items={select.detail} onChange={onSelectDetail} />
+            <p>hi</p>
         </>
     );
 };
