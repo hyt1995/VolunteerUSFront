@@ -20,12 +20,13 @@ type propsType = {
     onChangeCity: (e: ChangeEvent<HTMLSelectElement>) => void;
     onChangeDetail: (e: ChangeEvent<HTMLSelectElement>) => void;
     onChangeDate: (date: any) => void;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onSubmit?: (e: ChangeEvent<HTMLSelectElement>) => void;
     error?: string;
     onClick?: any;
 };
 
-const SearchForm = ({ form, select, onChangeCity, onChangeDetail, onChangeDate, onSubmit, error, onClick }: propsType) => {
+const SearchForm = ({ form, select, onChange, onChangeCity, onChangeDetail, onChangeDate, onSubmit, error, onClick }: propsType) => {
     const datePickerRef = useRef<HTMLInputElement | null>(null);
     const handleClick = (e) => {
         console.log(e);
@@ -69,7 +70,13 @@ const SearchForm = ({ form, select, onChangeCity, onChangeDetail, onChangeDate, 
 
                     <FlexBox>
                         <SubTitle>봉사 제목</SubTitle>
-                        <Input id="title" placeholder="제목 키워드를 입력해주세요" />
+                        <Input
+                            name="keyword"
+                            value={form.keyword}
+                            onChange={onChange}
+                            id="title"
+                            placeholder="제목 키워드를 입력해주세요"
+                        />
                     </FlexBox>
 
                     <FlexBox>

@@ -39,8 +39,7 @@ const useSearch = () => {
         [form]
     );
 
-    console.log(form);
-    return { form, select, onSelectCity, onSelectDetail, onChangeDate };
+    return { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate };
 };
 
 type selectType = {
