@@ -116,7 +116,18 @@ const List = styled.div`
     }
 `;
 
-const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
+const SearchForm = ({
+    form,
+    select,
+    onChange,
+    onChangeCity,
+    onChangeDetail,
+    onChangeDate,
+    handleCheck,
+    onSubmit,
+    error,
+    onClick
+}: propsType) => {
     const datePickerRef = useRef();
     const [props, setProps] = useState({
         value: new Date(),
@@ -149,15 +160,9 @@ const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
                     <FlexBox>
                         <SubTitle>봉사 지역</SubTitle>
                         <FlexBox column>
-                            <Select>
-                                <option value="">서울시</option>
-                            </Select>
-                            <Select>
-                                <option value="">분류 1</option>
-                            </Select>
-                            <Select>
-                                <option value="">분류 2</option>
-                            </Select>
+                            <DropDown options={select.city} onChange={onChangeCity} />
+                            <DropDown options={select.detail} onChange={onChangeDetail} />
+                            <DropDown options={select.detail} onChange={onChangeDetail} />
                         </FlexBox>
                     </FlexBox>
 
@@ -191,30 +196,21 @@ const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
 
                     <FlexBox>
                         <SubTitle>봉사 제목</SubTitle>
-                        <Input id="title" placeholder="제목 키워드를 입력해주세요" />
+                        <Input
+                            name="keyword"
+                            value={form.keyword}
+                            onChange={onChange}
+                            id="title"
+                            placeholder="제목 키워드를 입력해주세요"
+                        />
                     </FlexBox>
 
                     <FlexBox>
                         <SubTitle style={{ marginTop: '3px' }}>모집 대상</SubTitle>
                         <FlexBox style={{ justifyContent: 'space-between' }}>
-                            <CheckBox>
-                                <input id="group-1" type="checkbox" />
-                                <label htmlFor="group-1">
-                                    <span>성인</span>
-                                </label>
-                            </CheckBox>
-                            <CheckBox>
-                                <input id="group-2" type="checkbox" />
-                                <label htmlFor="group-2">
-                                    <span>청소년</span>
-                                </label>
-                            </CheckBox>
-                            <CheckBox>
-                                <input id="group-3" type="checkbox" />
-                                <label htmlFor="group-3">
-                                    <span>그룹</span>
-                                </label>
-                            </CheckBox>
+                            <CheckBox id="group-1" name="성인" onChange={handleCheck} />
+                            <CheckBox id="group-2" name="청소년" onChange={handleCheck} />
+                            <CheckBox id="group-3" name="그룹" onChange={handleCheck} />
                         </FlexBox>
                     </FlexBox>
                 </BorderBox>
@@ -228,7 +224,6 @@ const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
             <BaseBox>
                 <FlexBox align="flex-start" justify="space-between">
                     <Title>봉사 활동 목록</Title>
-
                     <div>
                         <Button text color="gray3" style={{ marginRight: '21px' }}>
                             가까운순

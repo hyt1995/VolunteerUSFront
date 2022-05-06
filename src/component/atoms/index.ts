@@ -5,10 +5,12 @@ import Input from './Input';
 import Error from './Error';
 import FullScreen from './FullScreen';
 import ModalBlock from './ModalBlock';
-import BaseBox from './BaseBox';
+import { BaseBox, BorderBox, FlexBox } from './Box';
 import Select from './Select';
 import CheckBox from './CheckBox';
 import RadioBox from './RadioBox';
+import { Title, SubTitle } from './Title';
+import List from './List';
 
 export {
     AuthFooter,
@@ -22,5 +24,10 @@ export {
     BaseBox,
     Select,
     CheckBox,
-    RadioBox
+    RadioBox,
+    BorderBox,
+    FlexBox,
+    Title,
+    SubTitle,
+    List
 };

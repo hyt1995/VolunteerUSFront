@@ -1,52 +1,81 @@
-import useInputs from '../useInputs';
-import { SyntheticEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useState, useCallback } from 'react';
+import useRecoilInput from '../useRecoilInput';
+import { registerAtom } from 'store/auth';
+import { birthdayFormatter } from 'utils/date';
+import { useRegisterMutation } from 'lib/query/auth';
+import { useRouter } from 'next/router';
 
 const useInfo = () => {
-    const { form, setForm, onChange } = useInputs({
-        name: '',
-        address: '',
-        age: '',
-        gender: ''
-    });
+    const { form, onChange, setForm } = useRecoilInput(registerAtom);
     const [visible, setVisible] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
+    const [register, { error: queryError }] = useRegisterMutation();
+
+    const onComplete = (body: any) => {
+        const { createUser } = body;
+
+        if (createUser) {
+            router.push('/search');
+        } else {
+            setError('회원가입 실패');
+        }
+    };
+
+    const onError = () => {
+        setError('회원가입 실패');
+    };
 
     const onSubmit = (e: SyntheticEvent) => {
-        const { email, password }: formType = form;
+        const { id, password, userName, gender, birthday, phone, address }: any = form;
         e.preventDefault();
-        setError(false);
 
-        console.log(email, password);
+        register({
+            variables: { id, userName, password, gender, birthday: '19950105', phone, address },
+            onCompleted: (body: any) => onComplete(body),
+            onError: () => onError()
+        });
     };
 
-    const onClick = () => {
+    const onClick = useCallback(() => {
         setVisible(true);
-    };
+    }, []);
 
-    const handleComplete = (data: any) => {
-        let fullAddress = data.address;
-        let extraAddress = '';
-
-        if (data.addressType === 'R') {
-            if (data.bname !== '') {
-                extraAddress += data.bname;
+    const onChangeBirthDay = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            const { birthday }: any = form;
+            const { value } = e.target;
+            if (birthday.length < value.length) {
+                setForm({ ...form, birthday: birthdayFormatter(value) });
+            } else {
+                setForm({ ...form, birthday: value });
             }
-            if (data.buildingName !== '') {
-                extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+        },
+        [form]
+    );
+
+    const handleComplete = useCallback(
+        (data: any) => {
+            let fullAddress = data.address;
+            let extraAddress = '';
+
+            if (data.addressType === 'R') {
+                if (data.bname !== '') {
+                    extraAddress += data.bname;
+                }
+                if (data.buildingName !== '') {
+                    extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+                }
+                fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
             }
-            fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
-        }
 
-        setForm({ ...form, address: fullAddress });
-        setVisible(false);
-    };
+            setForm({ ...form, address: fullAddress });
+            setVisible(false);
+        },
+        [form]
+    );
 
-    return { form, onChange, error, onSubmit, onClick, visible, handleComplete };
-};
-
-type formType = {
-    email: string;
-    password: string;
+    return { form, onChange, onChangeBirthDay, error, onSubmit, onClick, visible, handleComplete };
 };
 
 export default useInfo;

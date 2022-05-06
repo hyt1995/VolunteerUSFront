@@ -1,5 +1,7 @@
 import { useState, SyntheticEvent } from 'react';
 import useInputs from '../useInputs';
+import { useLoginQuery } from 'lib/query/auth';
+import { useRouter } from 'next/router';
 
 const useLogin = () => {
     const { form, onChange } = useInputs({
@@ -7,6 +9,20 @@ const useLogin = () => {
         password: ''
     });
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
+
+    const onComplete = (body: any) => {
+        const { login } = body;
+
+        if (login === '아이디가 없습니다.') {
+            setError('로그인 싪패');
+        } else {
+            localStorage.setItem('auth', JSON.stringify({ token: login }));
+            router.push('/search');
+        }
+    };
+
+    const [login] = useLoginQuery();
 
     const onSubmit = (e: SyntheticEvent) => {
         const { email, password }: formType = form;
@@ -15,9 +31,10 @@ const useLogin = () => {
             setError('빈 칸을 입력해주세요');
             return;
         }
+
         e.preventDefault();
 
-        console.log(email, password);
+        login({ variables: { id: email, password }, onCompleted: (body: any) => onComplete(body) });
     };
 
     return { form, onChange, error, onSubmit };

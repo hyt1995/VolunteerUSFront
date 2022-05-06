@@ -5,9 +5,14 @@ import Image from 'next/image';
 
 type propsType = {
     form: {
-        email: string;
+        id: string;
         password: string;
         confirmPassword: string;
+        userName: string;
+        gender: boolean;
+        birthday: string;
+        phone: string;
+        address: string;
     };
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (e: SyntheticEvent) => void;
@@ -22,7 +27,7 @@ const RegisterForm = ({ form, onChange, onSubmit, error }: propsType) => (
         </p>
 
         <div className="input-box">
-            <Input name="email" type="email" onChange={onChange} value={form.email} lg />
+            <Input name="id" type="id" onChange={onChange} value={form.id} lg />
             <label htmlFor="userId">
                 아이디<i>*</i>
             </label>
@@ -40,7 +45,7 @@ const RegisterForm = ({ form, onChange, onSubmit, error }: propsType) => (
         </div>
 
         <div className="input-box">
-            <Input name="confirmPassword" type="confirmPassword" onChange={onChange} value={form.confirmPassword} lg />
+            <Input name="confirmPassword" type="password" onChange={onChange} value={form.confirmPassword} lg />
             <label htmlFor="userPw">
                 비밀번호 확인<i>*</i>
             </label>
