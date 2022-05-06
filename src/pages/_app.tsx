@@ -10,6 +10,7 @@ import client from 'lib/gql/client';
 const MyApp = ({ Component, pageProps }: AppProps) => (
     <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
+            <GlobalStyle />
             <RecoilRoot>
                 <Component {...pageProps} />
             </RecoilRoot>
