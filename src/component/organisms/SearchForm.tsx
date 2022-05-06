@@ -21,7 +21,7 @@ type propsType = {
     onChangeDetail: (e: ChangeEvent<HTMLSelectElement>) => void;
     onChangeDate: (date: any) => void;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    handleCheck: (e: ChangeEvent) => void;
+    handleCheck: (e: ChangeEvent<HTMLInputElement>) => void;
     onSubmit?: (e: ChangeEvent<HTMLSelectElement>) => void;
     error?: string;
     onClick?: any;

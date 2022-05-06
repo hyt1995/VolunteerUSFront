@@ -1,5 +1,4 @@
 // import '../styles/globals.css';
-import GlobalStyle from '../styles/globals';
 import { theme } from '../styles/theme';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';

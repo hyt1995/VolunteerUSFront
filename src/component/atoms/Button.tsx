@@ -31,8 +31,8 @@ const buttonStyle = css<buttonStyleType>`
     ${(props) =>
         props.bgColor &&
         css`
-            ${({ theme, bgColor }) => {
-                const selected = theme.color[bgColor];
+            ${({ theme }) => {
+                const selected = props.bgColor ? theme.color[props.bgColor] : null;
                 return css`
                     background: ${selected};
                     &:hover {
@@ -44,8 +44,8 @@ const buttonStyle = css<buttonStyleType>`
     ${(props) =>
         props.outline &&
         css`
-            ${({ theme, color }) => {
-                const selected = theme.color[color];
+            ${({ theme }) => {
+                const selected = props.color ? theme.color[props.color] : null;
                 return css`
                     color: ${selected};
                     border-color: ${selected};
@@ -58,8 +58,8 @@ const buttonStyle = css<buttonStyleType>`
     ${(props) =>
         props.color &&
         css`
-            ${({ theme, color }) => {
-                const selected = theme.color[color];
+            ${({ theme }) => {
+                const selected = props.color ? theme.color[props.color] : null;
                 return css`
                     color: ${selected} !important;
                 `;

@@ -4,7 +4,7 @@ import { CheckBox as Check } from '../atoms';
 type propsType = {
     id: string;
     name: string;
-    onChange: (e: ChangeEvent) => void;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const CheckBox = ({ id, name, onChange }: propsType) => {
