@@ -9,7 +9,7 @@ const resetSwiper = css`
 
     /* slide */
     .swiper-slide {
-        height: 25vw !important;
+        height: 200px !important;
         border: 1px solid ${({ theme }) => theme.color.gray1};
     }
 

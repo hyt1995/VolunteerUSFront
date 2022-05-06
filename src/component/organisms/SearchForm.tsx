@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import DatePicker from 'react-multi-date-picker';
 import styled, { css } from 'styled-components';
 import { Button, Input, Error, Select, BaseBox, CheckBox } from '../atoms';
@@ -118,9 +118,13 @@ const List = styled.div`
 
 const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
     const datePickerRef = useRef();
-    const handleClick = (e) => {
-        console.log(e);
-    };
+    const [props, setProps] = useState({
+        value: new Date(),
+        format: 'YYYY.MM.DD',
+        onChange: (date) => console.log(date.format())
+    });
+    const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
+    const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
 
     return (
         <>
@@ -167,8 +171,18 @@ const SearchForm = ({ form, onChange, onSubmit, error, onClick }: any) => {
                             >
                                 <Image src="/images/icon/Calendar.svg" alt="icon" width={24} height={24} />
                             </Button>
-                            <DatePicker className="custom-picker" ref={datePickerRef}>
-                                <Button text onClick={() => datePickerRef.current.closeCalendar()} style={{ margin: '5px' }}>
+
+                            <DatePicker
+                                className="custom-picker"
+                                {...props}
+                                onPropsChange={setProps}
+                                weekDays={weekDays}
+                                months={months}
+                                arrow={false}
+                                calendarPosition="bottom-center"
+                                ref={datePickerRef}
+                            >
+                                <Button className="close" text onClick={() => datePickerRef.current.closeCalendar()}>
                                     <Image src="/images/icon/x.svg" alt="icon" width={16} height={16} />
                                 </Button>
                             </DatePicker>
