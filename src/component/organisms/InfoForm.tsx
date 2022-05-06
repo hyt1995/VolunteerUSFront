@@ -1,6 +1,28 @@
 import { AuthFormBlock, Button, Input, Error } from '../atoms';
+import { DropDown } from '../molecule';
+import { ChangeEvent, SyntheticEvent } from 'react';
 
-const InfoForm = ({ form, onChange, onSubmit, error, onClick, onChangeBirthDay }: any) => (
+type propsType = {
+    form: {
+        id: string;
+        password: string;
+        confirmPassword: string;
+        userName: string;
+        gender: boolean;
+        birthday: string;
+        phone: string;
+        address: string;
+    };
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onSubmit: (e: SyntheticEvent) => void;
+    error: string | null;
+    onClick: () => void;
+    onChangeBirthDay: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangePhoneNumber: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeGender: (e: ChangeEvent<HTMLSelectElement>) => void;
+};
+
+const InfoForm = ({ form, onChange, onSubmit, error, onClick, onChangeBirthDay, onChangePhoneNumber, onChangeGender }: propsType) => (
     <AuthFormBlock>
         <h2 className="title">
             봉사자님의
@@ -26,7 +48,12 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick, onChangeBirthDay }
         </div>
 
         <div className="input-box">
-            <Input name="gender" type="text" onChange={onChange} value={form.gender} lg />
+            <Input name="phone" type="text" onChange={onChangePhoneNumber} value={form.phone} lg />
+            <label htmlFor="phone">핸드폰 번호</label>
+        </div>
+
+        <div className="input-box">
+            <DropDown options={['남성', '여성']} onChange={onChangeGender} />
             <label htmlFor="gender">성별</label>
         </div>
 

@@ -5,14 +5,12 @@ const List = styled.div`
     align-items: center;
     padding: ${({ theme }) => theme.space.sm} 0;
     border-top: 1px solid ${({ theme }) => theme.color.gray1};
-
     .list-image {
         width: 80px;
         height: 80px;
         border-radius: 4px;
         background: #6681aa;
         overflow: hidden;
-
         img {
             width: 100%;
             height: 100%;
@@ -22,7 +20,6 @@ const List = styled.div`
     .list-info {
         flex: 2;
         margin: 0 ${({ theme }) => theme.space.sm};
-
         .title {
             font-size: 14px;
             font-weight: bold;
@@ -40,7 +37,6 @@ const List = styled.div`
             align-items: center;
             font-size: 12px;
             color: gray;
-
             & + & {
                 margin-top: 3px;
             }
