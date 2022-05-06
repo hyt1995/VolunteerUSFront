@@ -53,6 +53,8 @@ const useSearch = () => {
         [form]
     );
 
+    console.log(form);
+
     return { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate, handleCheck };
 };
 
