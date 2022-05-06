@@ -34,7 +34,7 @@ const useInfo = () => {
         e.preventDefault();
 
         register({
-            variables: { id, userName, password, gender, birthday: resetFormatter(birthday), phone: resetFormatter(birthday), address },
+            variables: { id, userName, password, gender, birthday: resetFormatter(birthday), phone: resetFormatter(phone), address },
             onCompleted: (body: any) => onComplete(body),
             onError: () => onError()
         });
