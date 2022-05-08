@@ -89,9 +89,9 @@ const SearchForm = ({
                     <FlexBox>
                         <SubTitle style={{ marginTop: '3px' }}>모집 대상</SubTitle>
                         <FlexBox style={{ justifyContent: 'space-between' }}>
-                            <CheckBox id="group-1" name="성인" onChange={handleCheck} />
-                            <CheckBox id="group-2" name="청소년" onChange={handleCheck} />
-                            <CheckBox id="group-3" name="그룹" onChange={handleCheck} />
+                            <CheckBox id="group-1" name="성인" value="adult" onChange={handleCheck} />
+                            <CheckBox id="group-2" name="청소년" value="teen" onChange={handleCheck} />
+                            <CheckBox id="group-3" name="그룹" value="group" onChange={handleCheck} />
                         </FlexBox>
                     </FlexBox>
                 </BorderBox>

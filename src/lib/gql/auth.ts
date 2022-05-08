@@ -11,7 +11,7 @@ export const register = gql`
     mutation createUser(
         $id: String!
         $userName: String!
-        $password: String!
+        $password: String
         $gender: Boolean
         $birthday: String
         $phone: String!
@@ -32,5 +32,19 @@ export const register = gql`
 export const confirmId = gql`
     query confirmUserId($id: String!) {
         confirmUserId(id: $id)
+    }
+`;
+
+export const kakaoLogin = gql`
+    mutation kakaoUserInfoLogin($token: String!) {
+        kakaoUserInfoLogin(token: $token) {
+            id
+            name
+            address
+            gender
+            birthday
+            phone
+            token
+        }
     }
 `;

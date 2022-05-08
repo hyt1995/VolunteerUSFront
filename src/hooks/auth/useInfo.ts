@@ -90,18 +90,7 @@ const useInfo = () => {
     // 주소 전처리
     const handleComplete = useCallback(
         (data: any) => {
-            let fullAddress = data.address;
-            let extraAddress = '';
-
-            if (data.addressType === 'R') {
-                if (data.bname !== '') {
-                    extraAddress += data.bname;
-                }
-                if (data.buildingName !== '') {
-                    extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
-                }
-                fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
-            }
+            let fullAddress = data.sido + data.sigungu + data.roadname;
 
             setForm({ ...form, address: fullAddress });
             setVisible(false);

@@ -1,9 +1,9 @@
 import { ChangeEvent, useCallback } from 'react';
+import useRecoil from './useRecoil';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 
 const useInput = (initialForm: any) => {
-    const [form, setForm] = useRecoilState<typeof initialForm>(initialForm);
-    const reset = useResetRecoilState(initialForm);
+    const [form, setForm, reset] = useRecoil(initialForm);
 
     const onChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,5 +1,6 @@
 import { useState, SyntheticEvent } from 'react';
 import useInputs from '../useInputs';
+import useSetUser from 'hooks/user/useSetUser';
 import { useLoginQuery } from 'lib/query/auth';
 import { useRouter } from 'next/router';
 
@@ -8,6 +9,7 @@ const useLogin = () => {
         email: '',
         password: ''
     });
+    const { userLogin } = useSetUser();
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
@@ -17,7 +19,7 @@ const useLogin = () => {
         if (login === '아이디가 없습니다.') {
             setError('로그인 싪패');
         } else {
-            localStorage.setItem('auth', JSON.stringify({ token: login }));
+            userLogin({ id: 'test', name: 'test', jwt: login });
             router.push('/search');
         }
     };

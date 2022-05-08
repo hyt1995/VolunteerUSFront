@@ -9,7 +9,11 @@ const useSearch = () => {
         detail: '',
         date: '',
         keyword: '',
-        target: []
+        target: {
+            teen: false,
+            adult: false,
+            group: false
+        }
     });
     const [select, setSelect] = useState<selectType>({
         city: Object.keys(korea),
@@ -41,17 +45,20 @@ const useSearch = () => {
 
     const handleCheck = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
-            const { target } = form;
-            const name = e.target.name;
+            const value = e.target.value;
 
-            if (target.includes(name)) {
-                setForm({ ...form, target: target.filter((value: string) => value !== name) });
-            } else {
-                setForm({ ...form, target: [...target, name] });
-            }
+            setForm({
+                ...form,
+                target: {
+                    ...form.target,
+                    [value]: !form.target[value]
+                }
+            });
         },
         [form]
     );
+
+    const onSubmit = useCallback(() => {}, []);
 
     console.log(form);
 
