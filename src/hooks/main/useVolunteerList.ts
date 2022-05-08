@@ -13,6 +13,7 @@ const useVolunteerList = () => {
 
     const onComplete = (body: any) => {
         const { infoListResponse } = body;
+
         if (data) {
             setData([...data, ...infoListResponse]);
         } else {
@@ -29,11 +30,18 @@ const useVolunteerList = () => {
         onComplete
     });
 
+    // 스크롤이 가장 아래로가면 페이지 증가
     useEffect(() => {
         if (intersecting) {
             setPage(page + 1);
         }
     }, [intersecting]);
+
+    // 검색 조건이 변경되면 data, page 초기화
+    useEffect(() => {
+        setData(null);
+        setPage(0);
+    }, [search]);
 
     return { data, fetchMoreEl };
 };
