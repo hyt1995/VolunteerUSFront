@@ -1,21 +1,13 @@
-import SearchForm from 'component/organisms/SearchForm';
-import Header from 'component/organisms/BaseHeader';
-import useSearch from '../../hooks/main/useSearch';
+import { Slide } from 'component/molecule';
+import { VolunteerListForm, SearchForm } from 'component/organisms';
 
 const Index = () => {
-    const { form, select, onChange, onSelectCity, onSelectDetail, onChangeDate, handleCheck } = useSearch();
     return (
         <>
-            <Header />
-            <SearchForm
-                form={form}
-                select={select}
-                onChange={onChange}
-                onChangeCity={onSelectCity}
-                onChangeDetail={onSelectDetail}
-                onChangeDate={onChangeDate}
-                handleCheck={handleCheck}
-            />
+            <Slide />
+            <hr />
+            <SearchForm />
+            <VolunteerListForm />
         </>
     );
 };

@@ -8,7 +8,7 @@ export const info = gql`
         $teenPossible: String
         $adultPossible: String
         $groupPossible: String
-        $pageNumber: int
+        $pageNumber: Int
     ) {
         infoListResponse(
             progrmBeginDate: $progrmBeginDate
@@ -19,26 +19,9 @@ export const info = gql`
             groupPossible: $groupPossible
             pageNumber: $pageNumber
         ) {
-            registNo
             progrmTitle
-            progrmBeginDate
             progrmEndDate
-            actBeginTm
-            actEndTm
-            recruitNunber
-            srvcClcode
-            mnnstNm
             postAdres
-            adminName
-            email
-            progrmExpl
-            telNo
-            actWkdy
-            noticeBegin
-            noticeEnd
-            teenPossible
-            adultPossible
-            groupPossible
         }
     }
 `;

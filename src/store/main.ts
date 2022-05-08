@@ -7,12 +7,11 @@ export const searchAtom = atom<searchType>({
         detail: '',
         date: '',
         keyword: '',
-        target: {
+        option: {
             teen: false,
             adult: false,
             group: false
-        },
-        page: 0
+        }
     }
 });
 
@@ -21,10 +20,9 @@ type searchType = {
     detail: string | null;
     date: string | null;
     keyword: string | null;
-    target: {
+    option: {
         teen: boolean;
         adult: boolean;
         group: boolean;
     };
-    page: number;
 };
