@@ -13,6 +13,7 @@
         "@apollo/react-hooks": "^4.0.0",
         "@types/webpack-env": "^1.16.4",
         "babel-plugin-inline-react-svg": "^2.0.1",
+        "graphql": "^16.5.0",
         "immer": "^9.0.12",
         "next": "12.1.5",
         "react": "^17.0.2",
