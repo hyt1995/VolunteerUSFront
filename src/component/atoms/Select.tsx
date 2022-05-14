@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 /**
  * 셀렉트박스
  */
-const Select = styled.select`
+const Select = styled.select<any>`
     -o-appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -15,6 +15,7 @@ const Select = styled.select`
     padding: 0 30px 0 ${({ theme }) => theme.space.sm};
     border-radius: 3px;
     border-color: ${({ theme }) => theme.color.gray1};
+    color: ${({ theme }) => theme.color.gray2};
     outline: 0 none;
 
     &::-ms-expand {
@@ -27,6 +28,11 @@ const Select = styled.select`
         background: #fff;
         color: ${({ theme }) => theme.color.gray2};
     }
+    ${(props) =>
+        props.lg &&
+        css`
+            height: 55px;
+        `}
 `;
 
 export default Select;

@@ -9,6 +9,6 @@
                 "preprocess": false
             }
         ],
-        ["inline-react-svg"]
+        "inline-react-svg"
     ]
 }

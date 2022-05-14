@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-type props = {
+type InputProps = {
     lg?: boolean;
 };
 
-const Input = styled.input<props>`
+export const Input = styled.input<InputProps>`
     transition: all 0.3s ease;
     width: 100%;
     height: 43px;
@@ -32,4 +32,23 @@ const Input = styled.input<props>`
         `}
 `;
 
-export default Input;
+type TextareaProps = {
+    height?: String;
+};
+
+export const Textarea = styled.textarea<TextareaProps>`
+    width: 100%;
+    min-height: 80px;
+    padding: ${({ theme }) => theme.space.sm};
+    font-size: 1rem;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    resize: none;
+
+    ${(props) =>
+        props.height &&
+        css`
+            height: ${props.height};
+        `}
+`;

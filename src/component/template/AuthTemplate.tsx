@@ -18,7 +18,7 @@ const AuthTemplateBlock = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media (max-height: 360px) {
+    @media (max-height: 600px) {
         justify-content: flex-start;
     }
 `;
@@ -30,8 +30,8 @@ const Box = styled.div`
     max-width: 360px;
     border-radius: 2px;
 
-    @media (max-height: 360px) {
-        padding: 20px 0;
+    @media (max-height: 600px) {
+        padding: 50px 20px;
     }
 `;
 

@@ -8,7 +8,9 @@ const color = {
     gray3: '#344052',
     primary: '#3282FA',
     warning: '#FFD028',
-    error: '#D82C2C'
+    error: '#D82C2C',
+    border: '#EEF0F7',
+    bg: '#F5F6F9'
 };
 
 export default color;
