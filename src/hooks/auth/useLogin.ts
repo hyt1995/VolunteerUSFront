@@ -15,13 +15,12 @@ const useLogin = () => {
 
     const onComplete = (body: any) => {
         const { login } = body;
+        userLogin({ id: login.id, name: login.userName, jwt: login.token });
+        router.push('/search');
+    };
 
-        if (login === '아이디가 없습니다.') {
-            setError('로그인 싪패');
-        } else {
-            userLogin({ id: 'test', name: 'test', jwt: login });
-            router.push('/search');
-        }
+    const onError = () => {
+        setError('로그인 실패.');
     };
 
     const [login] = useLoginQuery();
@@ -36,7 +35,7 @@ const useLogin = () => {
 
         e.preventDefault();
 
-        login({ variables: { id: email, password }, onCompleted: (body: any) => onComplete(body) });
+        login({ variables: { id: email, password }, onCompleted: (body: any) => onComplete(body), onError: () => onError });
     };
 
     return { form, onChange, error, onSubmit };

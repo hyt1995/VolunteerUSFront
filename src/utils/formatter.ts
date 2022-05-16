@@ -39,15 +39,15 @@ export const birthdayFormatter = (birthday: string) => {
     const lastStr = birthday[birthday.length - 1];
     console.log(birthday.length);
 
-    if (birthday.length >= 7 && !includeSlash(birthday)) {
-        birthday = birthday.slice(0, 4) + '/' + birthday.slice(4, 6) + '/' + birthday.slice(6, 8);
+    if (birthday.length >= 5 && !includeSlash(birthday)) {
+        birthday = birthday.slice(0, 2) + '/' + birthday.slice(2, 4) + '/' + birthday.slice(4, 6);
     } else if (birthday.length >= 5 && !includeSlash(birthday)) {
-        birthday = birthday.slice(0, 4) + '/' + birthday.slice(4, birthday.length);
+        birthday = birthday.slice(0, 2) + '/' + birthday.slice(2, birthday.length);
     }
 
-    if (birthday.length === 4) {
+    if (birthday.length === 2) {
         birthday += '/';
-    } else if (birthday.length === 7) {
+    } else if (birthday.length === 5) {
         birthday += '/';
     }
 
@@ -55,8 +55,8 @@ export const birthdayFormatter = (birthday: string) => {
         birthday = birthday.slice(0, -1);
     }
 
-    if (birthday.length > 10) {
-        birthday = birthday.slice(0, 10);
+    if (birthday.length > 8) {
+        birthday = birthday.slice(0, 8);
     }
     return birthday;
 };

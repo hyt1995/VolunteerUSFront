@@ -3,7 +3,11 @@ import gql from 'graphql-tag';
 
 export const login = gql`
     query login($id: String!, $password: String!) {
-        login(id: $id, password: $password)
+        login(id: $id, password: $password) {
+            token
+            userName
+            id
+        }
     }
 `;
 
@@ -46,5 +50,11 @@ export const kakaoLogin = gql`
             phone
             token
         }
+    }
+`;
+
+export const tokenLogin = gql`
+    query loginTokenAuth($token: String!) {
+        loginTokenAuth(token: $token)
     }
 `;
