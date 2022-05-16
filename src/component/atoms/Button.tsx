@@ -7,13 +7,16 @@ type buttonStyleType = {
     bgColor?: string;
     fullWidth?: boolean;
     fontSize?: string;
+    sm?: boolean;
     lg?: boolean;
     text?: boolean;
+    rounded?: boolean;
     outline?: boolean;
 };
 
 const buttonStyle = css<buttonStyleType>`
     height: 42px;
+    padding: 0 12px;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
@@ -66,6 +69,17 @@ const buttonStyle = css<buttonStyleType>`
             }}
         `}
     ${(props) =>
+        props.rounded &&
+        css`
+            border-radius: 50%;
+        `}
+    ${(props) =>
+        props.sm &&
+        css`
+            height: 30px;
+            font-size: 14px;
+        `}
+    ${(props) =>
         props.lg &&
         css`
             height: ${({ theme }) => theme.space.xlg};
@@ -92,11 +106,6 @@ const buttonStyle = css<buttonStyleType>`
         img {
             margin-right: 15px;
         }
-    }
-    &.outline {
-        background: #fff;
-        color: ${({ theme }) => theme.color.primary};
-        border: 2px solid ${({ theme }) => theme.color.primary};
     }
 `;
 

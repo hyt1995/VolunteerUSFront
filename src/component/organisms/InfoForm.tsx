@@ -53,7 +53,7 @@ const InfoForm = ({ form, onChange, onSubmit, error, onClick, onChangeBirthDay, 
         </div>
 
         <div className="input-box">
-            <DropDown options={['남성', '여성']} onChange={onChangeGender} />
+            <DropDown options={['남성', '여성']} onChange={onChangeGender} lg />
             <label htmlFor="gender">성별</label>
         </div>
 

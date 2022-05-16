@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { List } from '../atoms';
+import { ListTop } from '../../atoms';
 
 type propsType = {
     title: string;
@@ -9,25 +9,24 @@ type propsType = {
 
 const ListItem = ({ title, period, address }: propsType) => {
     return (
-        <List>
+        <ListTop>
             <div className="list-image">
                 <img src="" alt="" />
             </div>
             <div className="list-info">
-                <p className="title">{title}</p>
-                <div className="info">
-                    <Image src="/images/icon/watch.svg" alt="icon" width={16} height={16} />
-                    <span>{period}</span>
-                </div>
                 <div className="info">
                     <Image src="/images/icon/location.svg" alt="icon" width={16} height={16} />
-                    <span>{address}</span>
+                    <span className="place">{address}</span>
+                </div>
+
+                <p className="title">{title}</p>
+
+                <div className="info">
+                    <Image src="/images/icon/person.svg" alt="icon" width={16} height={16} />
+                    <span>{period}명</span>
                 </div>
             </div>
-            <div className="list-etc">
-                <span className="count">3</span>
-            </div>
-        </List>
+        </ListTop>
     );
 };
 

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-const List = styled.div`
+export const ListTop = styled.div`
     display: flex;
     align-items: center;
     padding: ${({ theme }) => theme.space.sm} 0;
     border-top: 1px solid ${({ theme }) => theme.color.gray1};
+
     .list-image {
         width: 80px;
         height: 80px;
@@ -20,45 +21,32 @@ const List = styled.div`
     .list-info {
         flex: 2;
         margin: 0 ${({ theme }) => theme.space.sm};
+        overflow: hidden;
+
         .title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 11px;
+            margin: 6px 0;
             /* 말줄임표 */
-            display: -webkit-box;
-            word-wrap: break-word;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            white-space: nowrap;
             text-overflow: ellipsis;
+            overflow: hidden;
         }
         .info {
             display: flex;
             align-items: center;
             font-size: 12px;
-            color: gray;
-            & + & {
-                margin-top: 3px;
-            }
+            font-weight: 500;
+            color: ${({ theme }) => theme.color.gray2};
+
             span {
-                margin-left: ${({ theme }) => theme.space.xxs};
+                margin-left: 3px;
+
+                &.place {
+                    font-weight: bold;
+                    color: ${({ theme }) => theme.color.point};
+                }
             }
-        }
-    }
-    .list-etc {
-        .count {
-            display: inline-block;
-            text-align: center;
-            width: 32px;
-            height: 32px;
-            line-height: 32px;
-            border-radius: 50%;
-            font-size: 21px;
-            font-weight: bold;
-            color: #fff;
-            background: ${({ theme }) => theme.color.primary};
         }
     }
 `;
-
-export default List;
