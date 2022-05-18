@@ -6,10 +6,7 @@ export const useLookUpQuery = ({ groupName, userName, onCompleted }: groupType) 
         variables: { applyGroupName: groupName, applyUserName: userName }
     });
 
-export const useGroupApplyMutation = ({ groupName, repreName, limit, groupGreeting, groupExplane, onCompleted }: groupApplyType) =>
-    useMutation(groupApply, {
-        variables: { groupName, repreName, limit, groupGreeting, groupExplane }
-    });
+export const useGroupApplyMutation = () => useMutation(groupApply);
 
 export const useUserApplyGroupMutation = ({ groupName, userName, onCompleted }: groupType) =>
     useMutation(userApplyToGroup, {
@@ -23,12 +20,4 @@ type commonType = {
 type groupType = commonType & {
     groupName: string;
     userName: string;
-};
-
-type groupApplyType = commonType & {
-    groupName: string;
-    repreName: string;
-    limit: number;
-    groupGreeting: string;
-    groupExplane: string;
 };
