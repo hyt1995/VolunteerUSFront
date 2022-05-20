@@ -2,9 +2,10 @@ import { Button, Input, Textarea, BaseBox, SubTitle, FlexBox } from '../atoms';
 import { DropDown } from '../molecule';
 import useSearch from '../../hooks/main/useSearch';
 import Image from 'next/image';
+import useGroupApply from '../../hooks/group/useGroupApply';
 
 const RegisterGroup = () => {
-    const { form, select, onChange, onSelectCity, onSelectDetail, onSubmit } = useSearch();
+    const { form, onChange, select, onSelectCity, onSelectDetail, onSubmit } = useGroupApply();
     return (
         <>
             <BaseBox>
@@ -21,8 +22,8 @@ const RegisterGroup = () => {
                     <div style={{ flex: '2' }}>
                         <SubTitle>그룹 이름</SubTitle>
                         <Input
-                            name="keyword"
-                            value={form.keyword}
+                            name="groupName"
+                            value={form.groupName}
                             onChange={onChange}
                             id="title"
                             placeholder="그룹이름을 입력해주세요"
@@ -32,8 +33,8 @@ const RegisterGroup = () => {
                     <div style={{ flex: '1', marginLeft: '21px' }}>
                         <SubTitle>정원</SubTitle>
                         <Input
-                            name="keyword"
-                            value={form.keyword}
+                            name="limit"
+                            value={form.limit}
                             onChange={onChange}
                             id="title"
                             placeholder="50명"
@@ -44,16 +45,22 @@ const RegisterGroup = () => {
                 <div style={{ margin: '21px 0 0' }}>
                     <SubTitle>그룹 소개</SubTitle>
                     <Textarea
+                        name="groupExplane"
+                        value={form.groupExplane}
+                        onChange={onChange}
                         placeholder="그룹 소개글을 적어주세요 (30자 이내)"
                         style={{ margin: '5px 0', background: '#F5F6F9' }}
-                    ></Textarea>
+                    />
                 </div>
                 <div style={{ margin: '21px 0 0' }}>
                     <SubTitle>그룹 설명</SubTitle>
                     <Textarea
+                        name="groupGreeting"
+                        value={form.groupGreeting}
+                        onChange={onChange}
                         placeholder="봉사 그룹의 목적과 목표를 설명해주세요"
                         style={{ margin: '5px 0', background: '#F5F6F9' }}
-                    ></Textarea>
+                    />
                 </div>
             </BaseBox>
             <BaseBox>

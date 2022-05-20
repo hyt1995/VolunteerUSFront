@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { ChangeEvent } from 'react';
 
 type InputProps = {
     lg?: boolean;
@@ -33,7 +34,9 @@ export const Input = styled.input<InputProps>`
 `;
 
 type TextareaProps = {
-    height?: String;
+    height?: string;
+    onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+    name?: string;
 };
 
 export const Textarea = styled.textarea<TextareaProps>`

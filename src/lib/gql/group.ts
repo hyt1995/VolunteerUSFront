@@ -17,19 +17,7 @@ export const lookUpGroup = gql`
 
 export const groupApply = gql`
     mutation groupApply($groupName: String!, $repreName: String!, $limit: Int!, $groupGreeting: String!, $groupExplane: String!) {
-        groupApply(
-            groupName: $groupName
-            repreName: $repreName
-            limit: $limit
-            groupGreeting: $groupGreeting
-            groupExplane: $groupExplane
-        ) {
-            groupName
-            repreName
-            limit
-            groupGreeting
-            groupExplain
-        }
+        groupApply(groupName: $groupName, repreName: $repreName, limit: $limit, groupGreeting: $groupGreeting, groupExplane: $groupExplane)
     }
 `;
 
