@@ -20,7 +20,7 @@ const DatePickerForm = ({ onChange }: propsType) => {
     return (
         <>
             <Button bgColor="gray1" style={{ padding: '9px', marginRight: '13px' }} onClick={handleChangeOpen}>
-                <Image src="/images/icon/Calendar.svg" alt="icon" width={24} height={24} />
+                <Image src="/images/icon/CalendarSvg.svg" alt="icon" width={24} height={24} />
             </Button>
 
             <DatePicker
