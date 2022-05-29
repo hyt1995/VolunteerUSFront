@@ -5,18 +5,21 @@ import { Input, Textarea } from './Input';
 import Error from './Error';
 import FullScreen from './FullScreen';
 import ModalBlock from './ModalBlock';
-import { BaseBox, BorderBox, FlexBox } from './Box';
+import { BgBox, ShadowBox, BaseBox, BorderBox, FlexBox } from './Box';
 import { HeaderBlock, LeftBtns, RightBtns } from './HeaderBox';
 import Select from './Select';
 import CheckBox from './CheckBox';
 import RadioBox from './RadioBox';
-import { Title, SubTitle } from './Title';
+import { Title, SubTitle, TextContent } from './Title';
 import { List } from './list/List';
 import { ListTop } from './list/ListTop';
 import { LeftNavi } from './NavigationDrawer';
 import { LeftNaviCont } from './LeftNaviCont';
-import { SvgBox } from './Icons';
 import { PositionBox } from './PositionBox';
+import SvgIcon from './SvgIcon';
+import TabBox from './TabBox';
+import { Chart } from './Chart';
+import Comment from './Comment';
 
 export {
     AuthFooter,
@@ -28,6 +31,8 @@ export {
     Error,
     FullScreen,
     ModalBlock,
+    BgBox,
+    ShadowBox,
     BaseBox,
     Select,
     CheckBox,
@@ -36,13 +41,17 @@ export {
     FlexBox,
     Title,
     SubTitle,
+    TextContent,
     List,
     ListTop,
     LeftNavi,
     LeftNaviCont,
     PositionBox,
-    SvgBox,
     HeaderBlock,
     LeftBtns,
-    RightBtns
+    RightBtns,
+    SvgIcon,
+    TabBox,
+    Chart,
+    Comment
 };

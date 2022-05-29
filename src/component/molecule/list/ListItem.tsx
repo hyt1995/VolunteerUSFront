@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { List } from '../../atoms';
+import { IconWatch, IconLocation } from 'asset/icon';
 
 type propsType = {
     title: string;
@@ -11,16 +12,16 @@ const ListItem = ({ title, period, address }: propsType) => {
     return (
         <List>
             <div className="list-image">
-                <img src="" alt="" />
+                <Image src="/images/list_thumnail.png" alt="thumbnail" width={80} height={80} />
             </div>
             <div className="list-info">
                 <p className="title">{title}</p>
                 <div className="info">
-                    <Image src="/images/icon/watch.svg" alt="icon" width={16} height={16} />
+                    <IconWatch size={16} mr={5} />
                     <span>{period}</span>
                 </div>
                 <div className="info">
-                    <Image src="/images/icon/location.svg" alt="icon" width={16} height={16} />
+                    <IconLocation size={16} mr={5} />
                     <span>{address}</span>
                 </div>
             </div>

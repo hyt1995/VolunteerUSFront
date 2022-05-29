@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import { FlexBox, SubTitle, Input } from '../atoms';
-import Image from 'next/image';
+import { FlexBox, SubTitle, Input, Chart } from '../atoms';
 import { Bar, Pie } from 'react-chartjs-2';
+import { IconChart, IconPersonCheck } from 'asset/icon';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -29,7 +29,7 @@ ChartJS.register(
 );
 const TopArea = styled.div<any>`
     padding: ${({ theme }) => theme.space.md};
-    background: ${({ theme }) => theme.color.bg};
+    background: ${({ theme }) => theme.color.blueSemi} url('/images/list_card_graphic_big.png') no-repeat right top / auto 100%;
     color: ${({ theme }) => theme.color.gray3};
     border-bottom: 2px solid ${({ theme }) => theme.color.gray1};
     font-weight: bold;
@@ -39,6 +39,11 @@ const TopArea = styled.div<any>`
         font-size: 16px;
         font-weight: 500;
         color: ${({ theme }) => theme.color.gray2};
+
+        &.area {
+            font-weight: 700;
+            color: ${({ theme }) => theme.color.primary} !important;
+        }
     }
 
     .open-url {
@@ -46,15 +51,17 @@ const TopArea = styled.div<any>`
 
         h2 {
             margin-bottom: ${({ theme }) => theme.space.xxs};
-            color: ${({ theme }) => theme.color.point};
+            color: ${({ theme }) => theme.color.gray3};
             font-size: 12px;
+            font-weight: 700;
         }
         &__input {
             display: flex;
             justify-content: center;
-            border: 2px solid ${({ theme }) => theme.color.point};
             text-decoration: underline;
             text-decoration-color: ${({ theme }) => theme.color.point};
+            background: #fff;
+            border-radius: 6px;
 
             span {
                 color: ${({ theme }) => theme.color.gray2};
@@ -91,30 +98,23 @@ const InfoArea = styled.div<any>`
         padding: ${({ theme }) => theme.space.sm};
     }
     ${(props) =>
-        props.bg &&
+        props.bgColor &&
         css`
-            background: ${({ theme }) => theme.color.bg};
+            ${({ theme }) => {
+                const selected = props.bgColor ? theme.color[props.bgColor] : null;
+                return css`
+                    background-color: ${selected};
+                `;
+            }}
         `}
-`;
-const Chart = styled.div<any>`
-    width: 320px;
-    height: 337px;
-    margin: 0 auto;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-    background: #fff;
-
-    .chart-canvas {
-        width: 100% !important;
-        height: 100% !important;
-        filter: blur(5px);
-        -webkit-filter: blur(5px);
-
-        &:hover {
-            filter: blur(0);
-            -webkit-filter: blur(0);
-        }
-    }
+    ${(props) =>
+        props.bgColor == 'blueSemi' &&
+        css`
+            background-image: url('/images/memberInfo_graphic.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+        `}
 `;
 const edit = true;
 const data = {
@@ -153,7 +153,7 @@ const options = {
             display: false
         },
         title: {
-            display: true,
+            display: false,
             text: '20대가 가장 많아요!',
             color: '#344052',
             font: {
@@ -217,8 +217,8 @@ const options2 = {
             display: false
         },
         title: {
-            display: true,
-            text: '남성이 더 많아요!',
+            display: false,
+            text: `<IconPersonCheck /> 남성이 더 많아요!`,
             color: '#344052',
             font: {
                 weight: 'bold',
@@ -254,7 +254,6 @@ const options2 = {
         ]
     }
 };
-
 const GroupView = () => {
     return (
         <>
@@ -273,7 +272,7 @@ const GroupView = () => {
                     )}
                 </div>
                 <FlexBox>
-                    <h2>지역 :</h2>
+                    <h2 className="area">지역 :</h2>
                     <p>강남구</p>
                 </FlexBox>
                 <FlexBox>
@@ -316,33 +315,29 @@ const GroupView = () => {
                 </FlexBox>
             </InfoArea>
 
-            <InfoArea bg>
+            <InfoArea bgColor={'blueSemi'}>
                 <FlexBox column>
-                    <SubTitle fontSize="14px">그룹 멤버 정보</SubTitle>
+                    <SubTitle fontSize="14px">
+                        <span style={{ marginRight: '5px' }}>🙌</span> 신청자 정보
+                    </SubTitle>
                     <div className="content">
                         <Chart>
-                            {data.datasets ? (
-                                <Bar
-                                    className="chart-canvas"
-                                    options={options}
-                                    data={data}
-                                    style={{ width: '100%', height: '100%', padding: '30px' }}
-                                />
-                            ) : (
-                                ''
-                            )}
+                            <div className="chart-box">
+                                <h2 className="chart-box__title">
+                                    <IconChart size={16} color={'white'} mr={8} />
+                                    20대가 가장 많아요!
+                                </h2>
+                                <Bar className="chart-canvas type-bar" options={options} data={data} />
+                            </div>
                         </Chart>
-                        <Chart style={{ margin: '30px auto 0' }}>
-                            {data.datasets ? (
-                                <Pie
-                                    className="chart-canvas"
-                                    options={options2}
-                                    data={data2}
-                                    style={{ width: '100%', height: '100%', padding: '30px' }}
-                                />
-                            ) : (
-                                ''
-                            )}
+                        <Chart>
+                            <div className="chart-box">
+                                <h2 className="chart-box__title">
+                                    <IconPersonCheck size={16} color={'white'} mr={8} />
+                                    남성이 더 많아요!
+                                </h2>
+                                <Pie className="chart-canvas" options={options2} data={data2} />
+                            </div>
                         </Chart>
                     </div>
                 </FlexBox>

@@ -6,6 +6,7 @@ import Slide from './Slide';
 import ListItem from './list/ListItem';
 import ListTopItem from './list/ListTopItem';
 import LeftNavigation from './LeftNavigation';
-import SvgIcon from './SvgIcon';
+import Tab from './Tab';
+import CommentBox from './CommentBox';
 
-export { DatePicker, DropDown, Modal, CheckBox, Slide, ListItem, ListTopItem, LeftNavigation, SvgIcon };
+export { DatePicker, DropDown, Modal, CheckBox, Slide, ListItem, ListTopItem, LeftNavigation, Tab, CommentBox };

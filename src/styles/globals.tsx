@@ -23,9 +23,13 @@ a {
     text-decoration: none;
 }
 
-  hr {
-      border-color: ${({ theme }) => theme.color.gray1}
-  }
+hr {
+    border-color: ${({ theme }) => theme.color.gray1}
+}
+
+ul,dl,ol,li {
+    list-style-type: none;
+}
 
   ${input}
   ${swiper}

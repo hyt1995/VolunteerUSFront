@@ -10,6 +10,7 @@ import VolunteerListTopForm from './VolunteerListTopForm';
 import RegisterGroup from './RegisterGroup';
 import TopSearchForm from './TopSearchForm';
 import GroupView from './GroupView';
+import VolunteerDetail from './VolunteerDetail';
 
 export {
     BaseHeader,
@@ -23,5 +24,6 @@ export {
     VolunteerListTopForm,
     RegisterGroup,
     TopSearchForm,
-    GroupView
+    GroupView,
+    VolunteerDetail
 };

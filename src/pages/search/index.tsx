@@ -1,3 +1,4 @@
+import { BgBox } from 'component/atoms';
 import { Slide } from 'component/molecule';
 import { VolunteerListForm, SearchForm, BaseHeader } from 'component/organisms';
 
@@ -7,8 +8,12 @@ const Index = () => {
             <BaseHeader />
             <Slide />
             <hr />
-            <SearchForm />
-            <VolunteerListForm />
+            <BgBox>
+                <SearchForm />
+            </BgBox>
+            <BgBox bgColor="blueSemi">
+                <VolunteerListForm />
+            </BgBox>
         </>
     );
 };

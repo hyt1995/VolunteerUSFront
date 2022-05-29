@@ -9,7 +9,7 @@ const Index = () => {
     return (
         <>
             <SubHeader title="꿈꾸는 봉사단">
-                {!isRight ? (
+                {isRight ? (
                     <Button className="btn-header-menu" text>
                         <Image src="/images/icon/edit.svg" alt="icon" width={24} height={24} />
                     </Button>

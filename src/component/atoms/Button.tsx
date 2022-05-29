@@ -12,6 +12,7 @@ type buttonStyleType = {
     text?: boolean;
     rounded?: boolean;
     outline?: boolean;
+    shadow?: boolean;
 };
 
 const buttonStyle = css<buttonStyleType>`
@@ -74,10 +75,16 @@ const buttonStyle = css<buttonStyleType>`
             border-radius: 50%;
         `}
     ${(props) =>
+        props.shadow &&
+        css`
+            box-shadow: 0px 0px 10px rgba(36, 41, 84, 0.45);
+        `}
+    ${(props) =>
         props.sm &&
         css`
-            height: 30px;
-            font-size: 14px;
+            height: 28px;
+            font-size: 16px;
+            border-radius: 3px;
         `}
     ${(props) =>
         props.lg &&

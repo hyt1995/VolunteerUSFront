@@ -6,6 +6,7 @@ export const HeaderBlock = styled.header`
     justify-content: center;
     align-items: center;
     height: 74px;
+    box-shadow: 0px 6px 25px rgba(30, 45, 74, 0.1);
 
     .logo {
         font-size: 18px;

@@ -20,7 +20,8 @@
         "baseUrl": "src",
         "paths": {
             "@component": ["src/component"]
-        }
+        },
+        "moduleResolution": "node",
     },
     "include": ["next-env.d.ts", "src/types/custom.d.ts", "**/*.ts", "**/*.tsx", "src"],
     "exclude": ["node_modules"]

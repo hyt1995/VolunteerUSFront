@@ -44,7 +44,7 @@ export const Textarea = styled.textarea<TextareaProps>`
     min-height: 80px;
     padding: ${({ theme }) => theme.space.sm};
     font-size: 1rem;
-    border-radius: 3px;
+    border-radius: ${({ theme }) => theme.space.xs};
     border: none;
     outline: none;
     resize: none;

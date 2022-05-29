@@ -1,4 +1,4 @@
-import { BaseBox, Button, FlexBox, Title } from '../atoms';
+import { BaseBox, BgBox, Button, FlexBox, Title } from '../atoms';
 import { ListItem } from '../molecule';
 import useVolunteerList from 'hooks/main/useVolunteerList';
 
@@ -7,18 +7,25 @@ const VolunteerListForm = () => {
 
     return (
         <>
+            <BgBox bgColor="gray3">
+                <BaseBox>
+                    <FlexBox align="flex-start" justify="space-between">
+                        <Title mb="0" color="#fff">
+                            <span style={{ marginRight: '5px' }}>👀</span> 봉사 활동 목록
+                        </Title>
+                        <div>
+                            <Button text color="white" style={{ marginRight: '21px' }}>
+                                기본순
+                            </Button>
+                            <Button text color="gray2">
+                                인기순
+                            </Button>
+                        </div>
+                    </FlexBox>
+                </BaseBox>
+            </BgBox>
             <BaseBox>
-                <FlexBox align="flex-start" justify="space-between">
-                    <Title>봉사 활동 목록</Title>
-                    <div>
-                        <Button text color="gray3" style={{ marginRight: '21px' }}>
-                            가까운순
-                        </Button>
-                        <Button text color="gray2">
-                            인기순
-                        </Button>
-                    </div>
-                </FlexBox>
+                <ListItem title="111111111111111111111111111111111111111111111111111111111111" period="222222" address="3333" />
                 {data &&
                     data.map((value: any) => {
                         return (
