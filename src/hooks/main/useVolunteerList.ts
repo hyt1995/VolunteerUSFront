@@ -11,7 +11,7 @@ const useVolunteerList = () => {
     const fetchMoreEl = useRef<any>(null);
     const intersecting = useInfiniteScroll(fetchMoreEl);
 
-    const onComplete = (body: any) => {
+    const onCompleted = (body: any) => {
         const { infoListResponse } = body;
 
         if (data) {
@@ -22,12 +22,14 @@ const useVolunteerList = () => {
     };
 
     const { error } = useSearchQuery({
-        begin: search.date,
-        post: search.detail,
-        title: search.keyword,
-        page,
-        option: search.option,
-        onComplete
+        progrmBeginDate: search.date,
+        postAdres: search.detail,
+        progrmTitle: search.keyword,
+        teenPossible: search.option.teen,
+        adultPossible: search.option.adult,
+        groupPossible: search.option.group,
+        pageNumber: page,
+        onCompleted
     });
 
     // 스크롤이 가장 아래로가면 페이지 증가

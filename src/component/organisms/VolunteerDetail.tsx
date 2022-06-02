@@ -105,7 +105,7 @@ const options2 = {
     plugins: {
         datalabels: {
             color: 'white',
-            display: function (context) {
+            display: function (context: any) {
                 return context.dataset.data[context.dataIndex] > 15;
             },
             font: {

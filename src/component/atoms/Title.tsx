@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 
-export const Title = styled.h2`
+interface TitleProps {
+    color?: string;
+    mb?: string | number;
+}
+
+export const Title = styled.h2<TitleProps>`
     font-size: 16px;
     color: ${({ theme }) => theme.color.gray3};
     margin-bottom: ${({ theme }) => theme.space.md};

@@ -4,7 +4,7 @@ const useInput = (initialForm: any) => {
     const [form, setForm] = useState<typeof initialForm>(initialForm);
 
     const onChange = useCallback(
-        (e: ChangeEvent<HTMLInputElement>) => {
+        (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
             const { name, value } = e.target;
             // @ts-ignore
             setForm({ ...form, [name]: value });

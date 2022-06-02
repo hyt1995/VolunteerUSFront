@@ -5,9 +5,9 @@ export const info = gql`
         $progrmBeginDate: String
         $postAdres: String
         $progrmTitle: String
-        $teenPossible: String
-        $adultPossible: String
-        $groupPossible: String
+        $teenPossible: Boolean
+        $adultPossible: Boolean
+        $groupPossible: Boolean
         $pageNumber: Int
     ) {
         infoListResponse(

@@ -55,6 +55,14 @@ export const kakaoLogin = gql`
 
 export const tokenLogin = gql`
     query loginTokenAuth($token: String!) {
-        loginTokenAuth(token: $token)
+        loginTokenAuth(token: $token) {
+            id
+            name
+            address
+            gender
+            birthday
+            phone
+            token
+        }
     }
 `;

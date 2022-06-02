@@ -13,7 +13,7 @@ const Tab = () => {
             <ul className="tab-menu">
                 {tabData.map((item) => (
                     <li
-                        className={index === item.id ? 'active' : null}
+                        className={index === item.id ? 'active' : undefined}
                         key={item.id}
                         onClick={() => {
                             setIndex(item.id);

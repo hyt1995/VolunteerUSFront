@@ -2,8 +2,8 @@
 import gql from 'graphql-tag';
 
 export const lookUpGroup = gql`
-    query lookUpGroup($groupName: String) {
-        lookUpGroup(groupName: $groupName) {
+    query lookUpGroup($groupName: String, $searchAddress: String, $pageNum: Int) {
+        lookUpGroup(groupName: $groupName, searchAddress: $searchAddress, pageNum: $pageNum) {
             groupName
             representName
             limitPeople
@@ -22,7 +22,7 @@ export const groupApply = gql`
 `;
 
 export const userApplyToGroup = gql`
-    mutation userApplyToGroup($applyGroupName: String, $applyUserName: String) {
-        userApplyToGroup(applyGroupName: $applyGroupName, applyUserName: $applyUserName)
+    mutation userApplyToGroup($applyGroupId: Int) {
+        userApplyToGroup(applyGroupId: $applyGroupId)
     }
 `;

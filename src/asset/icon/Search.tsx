@@ -1,8 +1,10 @@
+import { CSSProperties } from 'react';
 import { SvgIcon } from 'component/atoms';
 
 type IconProps = {
     size: number;
     color?: string;
+    style?: CSSProperties;
 };
 
 const IconSearch = ({ size, color, ...props }: IconProps) => {
