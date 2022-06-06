@@ -7,6 +7,11 @@ export const ListTop = styled.div<any>`
     border-radius: ${({ theme }) => theme.space.xs};
     background: #fff url('/images/list_card_graphic.png') no-repeat right top / auto 100%;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08);
+    ${(props) =>
+        props.border &&
+        css`
+            border: 1px solid ${({ theme }) => theme.color.gray1};
+        `}
 
     & + & {
         margin-top: ${({ theme }) => theme.space.md};
@@ -16,6 +21,7 @@ export const ListTop = styled.div<any>`
             text-align: center;
             width: 24px;
             height: 24px;
+            margin-right: ${({ theme }) => theme.space.sm};
             line-height: 25px;
             border-radius: 50%;
             color: ${({ theme }) => theme.color.gray3};
@@ -33,7 +39,7 @@ export const ListTop = styled.div<any>`
     .list-image {
         width: 80px;
         height: 80px;
-        margin: 0 ${({ theme }) => theme.space.sm};
+        margin-right: ${({ theme }) => theme.space.sm};
         border-radius: ${({ theme }) => theme.space.xxs};
         background: ${({ theme }) => theme.color.blueSemi};
         overflow: hidden;

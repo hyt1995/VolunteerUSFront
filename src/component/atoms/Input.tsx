@@ -3,6 +3,7 @@ import { ChangeEvent } from 'react';
 
 type InputProps = {
     lg?: boolean;
+    bgColor: string;
 };
 
 export const Input = styled.input<InputProps>`
@@ -31,12 +32,24 @@ export const Input = styled.input<InputProps>`
                 border-width: 2px;
             }
         `}
+
+    ${(props) =>
+        props.bgColor &&
+        css`
+            ${({ theme }) => {
+                const selected = props.bgColor ? theme.color[props.bgColor] : null;
+                return css`
+                    background: ${selected};
+                `;
+            }}
+        `}
 `;
 
 type TextareaProps = {
     height?: string;
     onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
     name?: string;
+    bgColor: string;
 };
 
 export const Textarea = styled.textarea<TextareaProps>`
@@ -53,5 +66,16 @@ export const Textarea = styled.textarea<TextareaProps>`
         props.height &&
         css`
             height: ${props.height};
+        `}
+
+    ${(props) =>
+        props.bgColor &&
+        css`
+            ${({ theme }) => {
+                const selected = props.bgColor ? theme.color[props.bgColor] : null;
+                return css`
+                    background: ${selected};
+                `;
+            }}
         `}
 `;

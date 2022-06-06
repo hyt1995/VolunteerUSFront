@@ -11,6 +11,7 @@ const color = {
     gray3: '#344052',
     grayWhiteBg: '#F0F1F5',
     primary: '#3282FA',
+    primaryBg: 'rgba(50, 130, 250, .7)',
     warning: '#FFD028',
     error: '#D82C2C',
     border: '#EEF0F7',

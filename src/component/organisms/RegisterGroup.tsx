@@ -25,9 +25,10 @@ const RegisterGroup = () => {
                             name="groupName"
                             value={form.groupName}
                             onChange={onChange}
+                            bgColor={`grayWhiteBg`}
                             id="title"
                             placeholder="그룹이름을 입력해주세요"
-                            style={{ margin: '5px 0', background: '#F5F6F9', border: 'none' }}
+                            style={{ margin: '5px 0', border: 'none' }}
                         />
                     </div>
                     <div style={{ flex: '1', marginLeft: '21px' }}>
@@ -36,9 +37,10 @@ const RegisterGroup = () => {
                             name="limit"
                             value={form.limit}
                             onChange={onChange}
+                            bgColor={`grayWhiteBg`}
                             id="title"
                             placeholder="50명"
-                            style={{ margin: '5px 0', background: '#F5F6F9', border: 'none' }}
+                            style={{ margin: '5px 0', border: 'none' }}
                         />
                     </div>
                 </FlexBox>
@@ -48,8 +50,9 @@ const RegisterGroup = () => {
                         name="groupExplane"
                         value={form.groupExplane}
                         onChange={onChange}
+                        bgColor={`grayWhiteBg`}
                         placeholder="그룹 소개글을 적어주세요 (30자 이내)"
-                        style={{ margin: '5px 0', background: '#F5F6F9' }}
+                        style={{ margin: '5px 0' }}
                     />
                 </div>
                 <div style={{ margin: '21px 0 0' }}>
@@ -58,8 +61,9 @@ const RegisterGroup = () => {
                         name="groupGreeting"
                         value={form.groupGreeting}
                         onChange={onChange}
+                        bgColor={`grayWhiteBg`}
                         placeholder="봉사 그룹의 목적과 목표를 설명해주세요"
-                        style={{ margin: '5px 0', background: '#F5F6F9' }}
+                        style={{ margin: '5px 0' }}
                     />
                 </div>
             </BaseBox>

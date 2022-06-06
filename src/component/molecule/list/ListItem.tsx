@@ -6,9 +6,10 @@ type propsType = {
     title: string;
     period: string;
     address: string;
+    count?: number;
 };
 
-const ListItem = ({ title, period, address }: propsType) => {
+const ListItem = ({ title, period, address, count }: propsType) => {
     return (
         <List>
             <div className="list-image">
@@ -25,9 +26,11 @@ const ListItem = ({ title, period, address }: propsType) => {
                     <span>{address}</span>
                 </div>
             </div>
-            <div className="list-etc">
-                <span className="count">3</span>
-            </div>
+            {count && (
+                <div className="list-etc">
+                    <span className="count">{count}</span>
+                </div>
+            )}
         </List>
     );
 };

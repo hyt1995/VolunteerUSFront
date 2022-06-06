@@ -21,7 +21,10 @@ export default class MyDocument extends Document<any> {
         return (
             <html>
                 <Head>
+                    <meta name="viewport" content="width=device-width, minimal-ui, viewport-fit=cover"></meta>
+
                     <title>My page</title>
+
                     {/* Step 5: Output the styles in the head  */}
                     {this.props.styleTags}
 

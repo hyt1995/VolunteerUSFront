@@ -34,6 +34,9 @@ export const FlexBox = styled.div<any>`
     display: flex;
     width: 100%;
 
+    & + & {
+        margin-top: ${({ theme }) => theme.space.sm};
+    }
     ${(props) =>
         props.mg &&
         css`
@@ -54,10 +57,6 @@ export const FlexBox = styled.div<any>`
         css`
             justify-content: ${props.justify};
         `}
-
-    & + & {
-        margin-top: ${({ theme }) => theme.space.sm};
-    }
 `;
 
 export const BaseBox = styled.div<any>`

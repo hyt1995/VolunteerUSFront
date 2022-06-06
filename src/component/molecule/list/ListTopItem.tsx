@@ -3,19 +3,21 @@ import { ListTop } from '../../atoms';
 import { IconPerson, IconLocation } from 'asset/icon';
 
 type propsType = {
-    no: [string, number];
+    no?: [string, number];
     title: string;
     period: string;
     address: string;
     top3?: boolean;
 };
 
-const ListItem = ({ no, title, period, address, top3 }: propsType) => {
+const ListItem = ({ no, title, period, address, top3, ...props }: propsType) => {
     return (
-        <ListTop top3={top3}>
-            <div className="list-no">
-                <div>{no}</div>
-            </div>
+        <ListTop top3={top3} {...props}>
+            {no && (
+                <div className="list-no">
+                    <div>{no}</div>
+                </div>
+            )}
             <div className="list-image">
                 <Image src="/images/list_thumnail.png" alt="thumbnail" width={80} height={80} />
             </div>

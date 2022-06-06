@@ -11,6 +11,7 @@ import RegisterGroup from './RegisterGroup';
 import TopSearchForm from './TopSearchForm';
 import GroupView from './GroupView';
 import VolunteerDetail from './VolunteerDetail';
+import Mypage from './Mypage';
 
 export {
     BaseHeader,
@@ -25,5 +26,6 @@ export {
     RegisterGroup,
     TopSearchForm,
     GroupView,
-    VolunteerDetail
+    VolunteerDetail,
+    Mypage
 };

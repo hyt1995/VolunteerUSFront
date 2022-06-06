@@ -7,6 +7,8 @@ export const HeaderBlock = styled.header`
     align-items: center;
     height: 74px;
     box-shadow: 0px 6px 25px rgba(30, 45, 74, 0.1);
+    padding: 0 0 calc(constant(safe-area-inset-top) + 5px);
+    padding: 0 0 calc(env(safe-area-inset-top) + 5px);
 
     .logo {
         font-size: 18px;

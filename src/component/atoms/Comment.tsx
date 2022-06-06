@@ -6,11 +6,12 @@ const Comment = styled.div<any>`
         background: ${({ theme }) => theme.color.blueSemi};
     }
     .comment-list {
+        $item: &;
+
         &__item {
             display: flex;
             justify-content: space-between;
             padding: ${({ theme }) => theme.space.md};
-            border-bottom: 2px solid ${({ theme }) => theme.color.gray1};
 
             .comment {
                 &-info {
@@ -25,6 +26,7 @@ const Comment = styled.div<any>`
                     padding-right: 5px;
                     margin-top: ${({ theme }) => theme.space.xs};
                     color: ${({ theme }) => theme.color.gray3};
+                    word-break: break-word;
                 }
                 &-more {
                     display: flex;
@@ -81,6 +83,9 @@ const Comment = styled.div<any>`
                 color: ${({ theme }) => theme.color.gray2};
             }
         }
+    }
+    .comment-list__item + .comment-list__item {
+        border-top: 1px solid ${({ theme }) => theme.color.gray1};
     }
 `;
 

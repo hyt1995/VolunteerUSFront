@@ -13,6 +13,7 @@ import RadioBox from './RadioBox';
 import { Title, SubTitle, TextContent } from './Title';
 import { List } from './list/List';
 import { ListTop } from './list/ListTop';
+import { ListComment } from './list/ListComment';
 import { LeftNavi } from './NavigationDrawer';
 import { LeftNaviCont } from './LeftNaviCont';
 import { PositionBox } from './PositionBox';
@@ -44,6 +45,7 @@ export {
     TextContent,
     List,
     ListTop,
+    ListComment,
     LeftNavi,
     LeftNaviCont,
     PositionBox,

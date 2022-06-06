@@ -61,7 +61,7 @@ export const SubTitle = styled.h3<any>`
         props.fontSize &&
         css`
             font-size: ${props.fontSize}px;
-            line-height: ${props.fontSize > 14 ? props.fontSize * 1.3 : 1}px;
+            ${props.fontSize > 14 && 'line-height:' + props.fontSize * 1.3 + 'px'};
         `}
     ${(props) =>
         props.mt &&
@@ -99,7 +99,7 @@ export const TextContent = styled.div<any>`
         props.fontSize &&
         css`
             font-size: ${props.fontSize}px;
-            line-height: ${props.fontSize > 14 ? props.fontSize * 1.3 : 1}px;
+            ${props.fontSize > 14 && 'line-height:' + props.fontSize * 1.3 + 'px'};
         `}
     ${(props) =>
         props.mt &&

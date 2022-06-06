@@ -11,6 +11,7 @@ import IconLocation from './Location';
 import IconLogout from './Logout';
 import IconMenu from './Menu';
 import IconPerson from './Person';
+import IconPlus from './Plus';
 import IconPlusCircle from './PlusCircle';
 import IconSearch from './Search';
 import IconUserRound from './UserRound';
@@ -36,6 +37,7 @@ export {
     IconLogout,
     IconMenu,
     IconPerson,
+    IconPlus,
     IconPlusCircle,
     IconSearch,
     IconUserRound,

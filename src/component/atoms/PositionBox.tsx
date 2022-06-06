@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 type StyleType = {
     fixed?: boolean;
     absolute?: boolean;
-    top?: string;
-    left?: string;
-    right?: string;
-    bottom?: string;
+    top?: [string, number];
+    left?: [string, number];
+    right?: [string, number];
+    bottom?: [string, number];
     center?: boolean;
     bgColor?: boolean;
     mask?: boolean;
@@ -16,12 +16,14 @@ type StyleType = {
 export const PositionBox = styled.div<StyleType>`
     position: absolute;
     z-index: 99;
+    width: 100%;
 
     ${(props) =>
         props.fixed &&
         css`
             position: fixed;
         `}
+
     ${(props) =>
         props.top &&
         css`
@@ -76,4 +78,13 @@ export const PositionBox = styled.div<StyleType>`
                 `;
             }}
         `}
+        
+    top: constant(safe-area-inset-right);
+    top: env(safe-area-inset-right);
+    bottom: constant(safe-area-inset-right);
+    bottom: env(safe-area-inset-right);
+    left: constant(safe-area-inset-right);
+    left: env(safe-area-inset-right);
+    right: constant(safe-area-inset-right);
+    right: env(safe-area-inset-right);
 `;

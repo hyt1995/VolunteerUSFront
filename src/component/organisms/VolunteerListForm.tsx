@@ -34,6 +34,7 @@ const VolunteerListForm = () => {
                                 period={value.progrmEndDate}
                                 address={value.postAdres}
                                 key={value.progrmTitle}
+                                count={3}
                             />
                         );
                     })}
